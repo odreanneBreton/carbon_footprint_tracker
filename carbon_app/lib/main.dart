@@ -1,6 +1,8 @@
 import 'package:carbon_app/constants/routes.dart';
 import 'package:carbon_app/views/welcome_view.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
 void main() {
   runApp(
