@@ -12,7 +12,7 @@ class _WelcomeViewState extends State<WelcomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 242, 250, 243),
+      backgroundColor: Color.fromARGB(255, 241, 255, 242),
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 170, 255, 34),
         foregroundColor: Color.fromARGB(255, 0, 0, 0),
