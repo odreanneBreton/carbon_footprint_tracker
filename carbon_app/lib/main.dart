@@ -1,10 +1,24 @@
+//routes
 import 'package:carbon_app/constants/routes.dart';
 import 'package:carbon_app/views/welcome_view.dart';
-import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';
+import 'package:carbon_app/views/auth.dart';
 
-void main() {
+//package
+import 'package:flutter/material.dart';
+
+//firebase
+import 'firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  await FirebaseAuth.instance.useAuthEmulator('localhost', 9099);
+
   runApp(
     MaterialApp(
       title: 'Carbon Footprint app',
@@ -15,6 +29,7 @@ void main() {
       routes: {
         // Pour se promener de pages en pages
         welcomeRoute: (context) => const WelcomeView(),
+        authRoute: (context) => AuthPage(),
       },
     ),
   );
@@ -25,6 +40,6 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const WelcomeView();
+    return AuthPage();
   }
 }
