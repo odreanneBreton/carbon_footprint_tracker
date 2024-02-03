@@ -46,10 +46,8 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
-<<<<<<< HEAD
   google_fonts: ^6.1.0
-=======
->>>>>>> f95d5de6f91681babe37eb83cd09c96fb0bebd99
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
