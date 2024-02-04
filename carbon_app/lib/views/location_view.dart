@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:carbon_app/constants/color.dart';
+import 'package:location/location.dart';
 
 class LocationView extends StatefulWidget {
   const LocationView({super.key});
@@ -10,6 +11,7 @@ class LocationView extends StatefulWidget {
 }
 
 class _LocationViewState extends State<LocationView> {  
+  int n = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,11 +56,38 @@ class _GetItineraryState extends State<GetItineraryButton> {
         children: <Widget>[
           ElevatedButton(
             style: style,
-            onPressed: () {},
-            child: const Text('Get Location'),
+            onPressed: () {
+              LocationService().requestPermission();
+              final currentLocation = LocationService().getCurrentLocation();
+              print(currentLocation);
+            },
+            child: Text("Get Location"),
           )
         ],
       ),
     );
+  }
+}
+
+class LocationService {
+  Location location = Location();
+
+  Future<bool> requestPermission() async {
+    final permission = await location.requestPermission();
+    return permission == PermissionStatus.granted;
+  }
+
+  Future<LocationData> getCurrentLocation() async {
+    final serviceEnabled = await location.serviceEnabled();
+    if (!serviceEnabled) {
+      final result = await location.requestService();
+      if (result) {
+        print('Service has been enabled');
+      } else {
+        throw Exception('GPS service not enabled');
+      }
+    }
+    final locationData = await location.getLocation();
+    return locationData;
   }
 }

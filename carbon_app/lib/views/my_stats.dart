@@ -59,80 +59,45 @@ class _MyStatsState extends State<MyStats> {
           ),
         ),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            ListView.builder(
-              shrinkWrap: true,
-              itemCount: 3,
-              itemBuilder: (BuildContext context, int index) {
-                return Column(children: [
-                  const SizedBox(height: 10),
-                  Container(
-                    height: 50,
-                    color: postColor,
-                    child: Row(children: [
-                      const SizedBox(width: 20),
-                      Text(userDashboard[index]["user"],
-                          textAlign: TextAlign.left,
-                          style: GoogleFonts.roboto(
-                            textStyle: const TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.normal,
-                            ),
-                          )),
-                      const Spacer(),
-                      Text(userDashboard[index]["Carbon"],
-                          textAlign: TextAlign.right,
-                          style: GoogleFonts.roboto(
-                            textStyle: const TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.normal,
-                            ),
-                          )),
-                      const SizedBox(width: 20),
-                    ]),
-                  ),
-                  Container(
-                    color: postColor,
-                    child: Row(
-                      children: [
-                        const SizedBox(width: 20),
-                        Expanded(
-                            child: Center(
-                          child: Text(userDashboard[index]["text"],
-                              textAlign: TextAlign.center,
-                              style: GoogleFonts.roboto(
-                                textStyle: const TextStyle(
-                                  fontSize: 23,
-                                  fontWeight: FontWeight.normal,
-                                ),
-                              )),
-                        )),
-                        const SizedBox(width: 20),
-                      ],
+      body: SingleChildScrollView(
+        child: Column(children: <Widget>[
+          SizedBox(
+            height: 20,
+          ),
+          //],
+          StatefulBuilder(
+              builder: (BuildContext context, StateSetter setState) {
+            return Column(children: [
+              Text("my stats",
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.kanit(
+                    textStyle: const TextStyle(
+                      fontSize: 40,
+                      fontWeight: FontWeight.normal,
                     ),
-                  ),
-                  Container(
-                    color: postColor,
-                    child: const Row(
-                      children: [
-                        SizedBox(height: 20),
-                      ],
+                  )),
+              SizedBox(
+                height: 30,
+              ),
+              Text("500 Mt CO2 saved!",
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.kanit(
+                    textStyle: const TextStyle(
+                      fontSize: 40,
+                      fontWeight: FontWeight.normal,
                     ),
-                  ),
-                ]);
-                // FeedPost(
-                //               newKey: userDashboard[index]["newKey"],
-                //               name: userDashboard[index]["name"],
-                //               carbon: userDashboard[index]["carbon"],
-                //               text: userDashboard[index]["text"],
-                //               time: userDashboard[index]["time"]);
-              },
-            ),
-          ],
-        ),
+                  )),
+              Text("last rides:",
+                  textAlign: TextAlign.left,
+                  style: GoogleFonts.kanit(
+                    textStyle: const TextStyle(
+                      fontSize: 40,
+                      fontWeight: FontWeight.normal,
+                    ),
+                  )),
+            ]);
+          }),
+        ]),
       ),
       bottomNavigationBar: BottomNavigationBar(
           iconSize: 45,
