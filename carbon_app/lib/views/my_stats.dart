@@ -15,7 +15,7 @@ class _MyStatsState extends State<MyStats> {
   List<Map> userDashboard = [
     {
       "newKey": 0,
-      "text": "my level: 2",
+      "text": "My level: 2",
     },
     {
       "newKey": 1,
@@ -23,11 +23,7 @@ class _MyStatsState extends State<MyStats> {
     },
     {
       "newKey": 2,
-      "text": "last ride: sauve metro to university of montreal metro",
-    },
-    {
-      "newKey": 3,
-      "text": "CO2 saved: 1k",
+      "text": "Last ride: sauve metro to university of montreal metro",
     },
   ];
 
@@ -72,7 +68,7 @@ class _MyStatsState extends State<MyStats> {
                   color: postColor,
                   child: Row(children: [
                     const SizedBox(width: 20),
-                    Text("my stats",
+                    Text("My Stats",
                         textAlign: TextAlign.left,
                         style: GoogleFonts.roboto(
                           textStyle: const TextStyle(
@@ -134,7 +130,7 @@ class _MyStatsState extends State<MyStats> {
                   color: postColor,
                   child: Row(children: [
                     const SizedBox(width: 20),
-                    Text("equivalent in term of trees: 3",
+                    Text("Equivalent in term of trees: 3",
                         textAlign: TextAlign.left,
                         style: GoogleFonts.roboto(
                           textStyle: const TextStyle(
