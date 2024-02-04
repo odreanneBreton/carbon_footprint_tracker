@@ -14,7 +14,6 @@ class LocationView extends StatefulWidget {
 }
 
 class _LocationViewState extends State<LocationView> {
-  int n = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,7 +66,7 @@ class _GetItineraryState extends State<GetItineraryButton> {
                 double? currentlatitude = locationData.latitude;
                 double? currentlongitude = locationData.longitude;
                 print("Location: $currentlatitude, $currentlongitude");
-                List nearestStation = await getDistance() ?? [];
+                List nearestStation = await getDistanceNearestMetro() ?? [];
                 if (nearestStation == []) {
                   txt = "You are not in the metro!";
                   await showNoMetroDialog(context, txt);
@@ -76,6 +75,7 @@ class _GetItineraryState extends State<GetItineraryButton> {
                       "Nearest Station : ${nearestStation[0]}, at ${nearestStation[1]} meters";
                   await showYesMetroDialog(context, txt);
                 }
+                _changeState();
               }
             },
             child: Text("Get Location"),

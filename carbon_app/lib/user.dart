@@ -1,10 +1,10 @@
-class User {
+class Person {
   String uid;
 
   String name;
   double money;
   double co2;
-  User({
+  Person({
     required this.uid,
     required this.money,
     required this.name,

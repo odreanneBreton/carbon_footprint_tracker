@@ -1,11 +1,11 @@
 import 'package:carbon_app/constants/routes.dart';
+import 'package:carbon_app/services/firestore_service.dart';
 import 'package:carbon_app/views/create_account.dart';
 import 'package:carbon_app/services/auth_service.dart';
 import 'package:carbon_app/views/welcome_view.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:carbon_app/services/realtime_service.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -63,8 +63,14 @@ class _LoginScreenState extends State<LoginScreen> {
                         password: _passwordController.text,
                       );
                       if (message!.contains('Success')) {
-                        FirebaseDatabaseService firebaseDatabaseService;
-                        // firebaseDatabaseService.addNewUser();
+                        FirestoreService firestoreService = FirestoreService();
+                        User? user = FirebaseAuth.instance.currentUser;
+                        if (user != null) {
+                          // Access the UID
+                          firestoreService.addNewUser(user.uid);
+                        } else {
+                          print("User not logged in");
+                        }
                         Navigator.of(context).pushReplacement(
                           MaterialPageRoute(
                             builder: (context) => const WelcomeView(),
