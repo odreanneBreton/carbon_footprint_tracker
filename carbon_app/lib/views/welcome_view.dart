@@ -1,5 +1,4 @@
 import 'package:carbon_app/constants/routes.dart';
-import 'package:carbon_app/utilities/post.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 

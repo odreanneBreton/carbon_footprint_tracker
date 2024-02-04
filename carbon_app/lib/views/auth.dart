@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:carbon_app/constants/color.dart';
 
 class AuthPage extends StatelessWidget {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -8,7 +9,8 @@ class AuthPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Firebase Authentication'),
+        title: Text('Authentication'),
+        backgroundColor: background_color,
       ),
       body: Center(
         child: Padding(
@@ -22,12 +24,19 @@ class AuthPage extends StatelessWidget {
                 },
                 child: Text('Sign In with Google'),
               ),
-              SizedBox(height: 16),
+              SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () async {
                   await _signInWithEmailAndPassword();
                 },
                 child: Text('Sign In with Email and Password'),
+              ),
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () async {
+                  await _signUp();
+                },
+                child: Text('Sign Up'),
               ),
             ],
           ),
@@ -45,6 +54,14 @@ class AuthPage extends StatelessWidget {
   }
 
   Future<void> _signInWithEmailAndPassword() async {
+    try {
+      // Implement Email and Password Sign-In logic using Firebase
+    } catch (e) {
+      print('Error signing in with Email and Password: $e');
+    }
+  }
+
+  Future<void> _signUp() async {
     try {
       // Implement Email and Password Sign-In logic using Firebase
     } catch (e) {
