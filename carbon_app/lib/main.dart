@@ -32,7 +32,8 @@ Future<void> main() async {
         // Pour se promener de pages en pages
         welcomeRoute: (context) => const WelcomeView(),
         authRoute: (context) => AuthPage(),
-        loginRoute: (context) => AuthPage()
+        loginRoute: (context) => AuthPage(),
+        myStats: (context) => const MyStats(),
       },
     ),
   );

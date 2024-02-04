@@ -39,18 +39,18 @@ class _WelcomeViewState extends State<WelcomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: background_color,
+      backgroundColor: backgroundColor,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(70.0),
         child: AppBar(
-          backgroundColor: header_color,
+          backgroundColor: headerColor,
           foregroundColor: Color.fromARGB(255, 0, 0, 0),
           title: Center(
             child: Text(
               'GREENRIDE',
               style: GoogleFonts.lato(
                 textStyle: const TextStyle(
-                  color: letter_color,
+                  color: letterColor,
                   fontSize: 40,
                   fontWeight: FontWeight.normal,
                 ),
@@ -71,7 +71,7 @@ class _WelcomeViewState extends State<WelcomeView> {
                   const SizedBox(height: 10),
                   Container(
                     height: 50,
-                    color: post_color,
+                    color: postColor,
                     child: Row(children: [
                       const SizedBox(width: 20),
                       Text(userDashboard[index]["user"],
@@ -95,7 +95,7 @@ class _WelcomeViewState extends State<WelcomeView> {
                     ]),
                   ),
                   Container(
-                    color: post_color,
+                    color: postColor,
                     child: Row(
                       children: [
                         const SizedBox(width: 20),
@@ -115,7 +115,7 @@ class _WelcomeViewState extends State<WelcomeView> {
                     ),
                   ),
                   Container(
-                    color: post_color,
+                    color: postColor,
                     child: const Row(
                       children: [
                         SizedBox(height: 20),
@@ -140,26 +140,26 @@ class _WelcomeViewState extends State<WelcomeView> {
             BottomNavigationBarItem(
               icon: Icon(Icons.grass_outlined),
               label: 'me',
-              backgroundColor: navbar_color,
+              backgroundColor: navbarColor,
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.bar_chart),
               label: 'others',
-              backgroundColor: navbar_color,
+              backgroundColor: navbarColor,
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.emoji_objects),
               label: 'knowledge',
-              backgroundColor: navbar_color,
+              backgroundColor: navbarColor,
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.account_circle),
               label: 'profile',
-              backgroundColor: navbar_color,
+              backgroundColor: navbarColor,
             ),
           ],
           currentIndex: _selectedIndex,
-          selectedItemColor: icon_color,
+          selectedItemColor: iconColor,
           onTap: (int index) {
             switch (index) {
               case 0:
