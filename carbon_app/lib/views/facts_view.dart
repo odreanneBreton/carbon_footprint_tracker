@@ -17,7 +17,7 @@ class _FactsViewState extends State<FactsView> {
     {
       "newKey": 0,
       "text":
-          "Pollution is one of the biggest global killers, affecting over 100 million people. That’s comparable to global diseases like malaria and HIV",
+          "Pollution is one of the biggest global killers, affecting over 100 million people. That’s comparable to global diseases like malaria and HIV.",
       "source":
           "Do Something.org https://www.dosomething.org/us/facts/11-facts-about-pollution"
     },
@@ -77,14 +77,44 @@ class _FactsViewState extends State<FactsView> {
                       fit: BoxFit.cover,
                     ),
                   ),
-                  child: Text(facts[0]["text"],
-                      textAlign: TextAlign.left,
-                      style: GoogleFonts.roboto(
-                        textStyle: const TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.normal,
-                        ),
-                      )),
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: 40,
+                      ),
+                      Text('did you know...',
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.roboto(
+                            textStyle: const TextStyle(
+                              fontSize: 40,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          )),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      Text(facts[0]["text"],
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.roboto(
+                            textStyle: const TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.normal,
+                            ),
+                          )),
+                      SizedBox(
+                        height: 370,
+                      ),
+                      Text(
+                          "source: Do Something.org https://www.dosomething.org/us/facts/11-facts-about-pollution",
+                          textAlign: TextAlign.left,
+                          style: GoogleFonts.roboto(
+                            textStyle: const TextStyle(
+                              fontSize: 10,
+                              fontWeight: FontWeight.normal,
+                            ),
+                          )),
+                    ],
+                  ),
                 ),
 
                 //2nd Image of  carousel Slider flutter

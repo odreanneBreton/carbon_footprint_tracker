@@ -10,7 +10,7 @@ class LocationView extends StatefulWidget {
   State<LocationView> createState() => _LocationViewState();
 }
 
-class _LocationViewState extends State<LocationView> {  
+class _LocationViewState extends State<LocationView> {
   int n = 0;
   @override
   Widget build(BuildContext context) {
@@ -47,8 +47,8 @@ class GetItineraryButton extends StatefulWidget {
 class _GetItineraryState extends State<GetItineraryButton> {
   @override
   Widget build(BuildContext context) {
-    final ButtonStyle style = 
-      ElevatedButton.styleFrom(textStyle: const TextStyle(fontSize: 20));
+    final ButtonStyle style =
+        ElevatedButton.styleFrom(textStyle: const TextStyle(fontSize: 20));
 
     return Center(
       child: Column(
