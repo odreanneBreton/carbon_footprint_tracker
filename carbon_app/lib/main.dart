@@ -2,8 +2,10 @@
 import 'package:carbon_app/constants/routes.dart';
 import 'package:carbon_app/views/my_stats.dart';
 import 'package:carbon_app/views/welcome_view.dart';
-import 'package:carbon_app/views/location_view.dart';
 import 'package:carbon_app/views/auth.dart';
+import 'package:carbon_app/views/signup.dart';
+import 'package:carbon_app/views/login_view.dart';
+
 import 'package:flutter/material.dart';
 
 //firebase
@@ -29,9 +31,8 @@ Future<void> main() async {
       routes: {
         // Pour se promener de pages en pages
         welcomeRoute: (context) => const WelcomeView(),
-        locationRoute: (context) => const LocationView(),
         authRoute: (context) => AuthPage(),
-        myStats: (context) => const MyStats(),
+        loginRoute: (context) => AuthPage()
       },
     ),
   );
@@ -42,6 +43,6 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const WelcomeView();
+    return AuthPage();
   }
 }
