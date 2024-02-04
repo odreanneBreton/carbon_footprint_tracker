@@ -12,7 +12,7 @@ class LocationView extends StatefulWidget {
 }
 
 class _LocationViewState extends State<LocationView> {
-  int n = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,6 +46,21 @@ class GetItineraryButton extends StatefulWidget {
 }
 
 class _GetItineraryState extends State<GetItineraryButton> {
+
+  int counter = 0;
+  void _changeState() {
+    setState(() {
+      switch (counter) {
+        case 0:
+          counter++;
+          break;
+        case 1:
+          counter--;
+          break;
+      };
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final ButtonStyle style =
@@ -63,12 +78,13 @@ class _GetItineraryState extends State<GetItineraryButton> {
                 double? currentlatitude = locationData.latitude;
                 double? currentlongitude = locationData.longitude;
                 print("Location: $currentlatitude, $currentlongitude");
-                List nearestStation = await getDistance() ?? [];
+                List nearestStation = await getDistanceNearestMetro() ?? [];
                 if (nearestStation == []) {
                   print("You are not in the metro!");
                 } else {
                   print("Nearest Station : ${nearestStation[0]}, at ${nearestStation[1]} meters");
                 }
+                _changeState();
               }
             },
             child: Text("Get Location"),

@@ -10,7 +10,7 @@ Future<List<List<dynamic>>> readCsv() async {
   return csvTable;
 }
 
-Future<List?> getDistance () async {
+Future<List?> getDistanceNearestMetro () async {
   List<List<dynamic>> csvTable = await readCsv();
   LocationData locationData = await LocationService().getCurrentLocation();
   double? currentLatitude = locationData.latitude;
@@ -41,6 +41,11 @@ Future<List?> getDistance () async {
     return null;
   }
 
+}
+
+double getRouteDistance(double latA, lonA, latB, lonB) { // utiliser les currentLatitude et currentLongitude du point de depart
+  double distance = haversineDistance(latA, lonA, latB, lonB) * 1000; // et du point d'arrivee comme parametres
+  return distance;
 }
 
 
