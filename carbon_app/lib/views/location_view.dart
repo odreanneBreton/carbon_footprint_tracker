@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:carbon_app/constants/color.dart';
 
 class LocationView extends StatefulWidget {
   const LocationView({super.key});
@@ -12,16 +13,16 @@ class _LocationViewState extends State<LocationView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 241, 255, 242),
+      backgroundColor: backgroundColor,
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 170, 255, 34),
-        foregroundColor: Color.fromARGB(255, 0, 0, 0),
+        backgroundColor: headerColor,
+        foregroundColor: letterColor,
         title: Center(
           child: Text(
             'New Itinerary',
             style: GoogleFonts.montserrat(
               textStyle: const TextStyle(
-                color: Color.fromARGB(255, 0, 0, 0),
+                color: letterColor,
                 fontSize: 40,
                 fontWeight: FontWeight.normal,
               ),
@@ -31,7 +32,6 @@ class _LocationViewState extends State<LocationView> {
       ),
       body: const GetItineraryButton(),
     );
-    throw UnimplementedError();
   }
 }
 
@@ -55,8 +55,8 @@ class _GetItineraryState extends State<GetItineraryButton> {
           ElevatedButton(
             style: style,
             onPressed: () {},
-            child: const Text('Get Location'),  
-          ),
+            child: const Text('Get Location'),
+          )
         ],
       ),
     );
