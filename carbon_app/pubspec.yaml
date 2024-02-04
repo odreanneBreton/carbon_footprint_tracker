@@ -37,7 +37,11 @@ dependencies:
   cupertino_icons: ^1.0.2
   firebase_core: ^2.25.3
   firebase_auth: ^4.17.3
-  location: ^4.3.0
+  location: 
+      git:
+        url: https://github.com/781flyingdutchman/flutterlocation.git
+        ref: 'V4'
+        path: packages/location
 
 dev_dependencies:
   flutter_test:
