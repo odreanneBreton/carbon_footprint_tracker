@@ -22,9 +22,9 @@ class AuthView extends StatelessWidget {
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () async {
-                  Navigator.of(context).pushNamed(createAccountRoute);
+                  Navigator.of(context).pushNamed(loginRoute);
                 },
-                child: Text('Sign In with Email and Password'),
+                child: Text('Sign In '),
               ),
               SizedBox(height: 20),
               ElevatedButton(
