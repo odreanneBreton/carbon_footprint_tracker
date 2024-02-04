@@ -1,6 +1,6 @@
 //routes
 import 'package:carbon_app/constants/routes.dart';
-// import 'package:carbon_app/views/userProfile.dart';
+import 'package:carbon_app/views/userProfile.dart';
 import 'package:carbon_app/views/facts_view.dart';
 import 'package:carbon_app/views/my_stats.dart';
 import 'package:carbon_app/views/welcome_view.dart';
@@ -36,8 +36,8 @@ void main() async {
         loginRoute: (context) => const LoginScreen(),
         myStats: (context) => const MyStats(),
         createAccountRoute: (context) => const CreateAccount(),
-        facts: (context) => const FactsView(),
-        profile: (context) => const FactsView(),
+        factsRoute: (context) => const FactsView(),
+        profile: (context) => const UserProfile(),
       },
     ),
   );
