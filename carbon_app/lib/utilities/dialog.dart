@@ -1,6 +1,7 @@
 import 'package:carbon_app/views/my_stats.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 Future<void> showYesMetroDialog(
   BuildContext context,
@@ -52,19 +53,40 @@ Future<void> showWinMetroDialog(
   BuildContext context,
   String text,
   String lastStation,
-  double gazPrice,
-  double carbon,
+  int gazPrice,
+  int carbon,
 ) {
   return showDialog(
     context: context,
     builder: (context) {
       return AlertDialog(
-        title: const Text('Nice!'),
+        title: Text('Nice!',
+            style: GoogleFonts.roboto(
+              textStyle: const TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.w500,
+              ),
+            )),
         content: Column(
           children: [
-            Text(text),
-            Text("You saved \$ $gazPrice "),
-            Text("You saved $carbon CO2")
+            SizedBox(height: 100),
+            Text("You saved \$ $gazPrice ",
+                style: GoogleFonts.roboto(
+                  textStyle: const TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
+                  ),
+                )),
+            SizedBox(height: 100),
+            Text("You saved $carbon Kg CO2",
+                style: GoogleFonts.roboto(
+                  textStyle: const TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
+                  ),
+                )),
+            SizedBox(height: 100),
+            Icon(Icons.nature_people, size: 60),
           ],
         ),
         actions: [

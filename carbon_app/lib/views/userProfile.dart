@@ -13,10 +13,27 @@ class UserProfile extends StatefulWidget {
 class _UserProfileState extends State<UserProfile> {
   int _selectedIndex = 3;
 
-  // Corrected variable declarations
-  String name = ""; // Placeholder for user's name
-  String email = ""; // Corrected syntax
-  String password = ""; // Corrected syntax
+  late final TextEditingController name;
+  late final TextEditingController email;
+  late final TextEditingController password;
+
+  // constructor
+  @override
+  void initState() {
+    name = TextEditingController();
+    email = TextEditingController();
+    password = TextEditingController();
+    super.initState();
+  }
+
+// deconstructor
+  @override
+  void dispose() {
+    name.dispose();
+    email.dispose();
+    password.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,17 +75,12 @@ class _UserProfileState extends State<UserProfile> {
                 ),
                 SizedBox(height: 8), // Add some spacing
                 TextField(
-                  controller: TextEditingController(text: name),
+                  controller: name,
                   decoration: InputDecoration(
-                    hintText: 'Enter your name',
+                    hintText: '',
                     border: OutlineInputBorder(),
                     suffixIcon: Icon(Icons.edit),
                   ),
-                  onChanged: (value) {
-                    setState(() {
-                      name = value;
-                    });
-                  },
                 ),
                 Text(
                   'Your Email',
@@ -76,17 +88,12 @@ class _UserProfileState extends State<UserProfile> {
                 ),
                 SizedBox(height: 8), // Add some spacing
                 TextField(
-                  controller: TextEditingController(text: email),
+                  controller: email,
                   decoration: InputDecoration(
                     hintText: 'Enter your email address',
                     border: OutlineInputBorder(),
                     suffixIcon: Icon(Icons.edit),
                   ),
-                  onChanged: (value) {
-                    setState(() {
-                      email = value;
-                    });
-                  },
                 ),
                 Text(
                   'Your password',
@@ -94,7 +101,7 @@ class _UserProfileState extends State<UserProfile> {
                 ),
                 SizedBox(height: 8), // Add some spacing
                 TextField(
-                  controller: TextEditingController(text: password),
+                  controller: password,
                   obscureText: true,
                   enableSuggestions: false,
                   autocorrect: false,
@@ -103,11 +110,6 @@ class _UserProfileState extends State<UserProfile> {
                     border: OutlineInputBorder(),
                     suffixIcon: Icon(Icons.lock),
                   ),
-                  onChanged: (value) {
-                    setState(() {
-                      password = value;
-                    });
-                  },
                 ),
               ],
             ),

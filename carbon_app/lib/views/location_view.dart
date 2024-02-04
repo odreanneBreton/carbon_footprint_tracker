@@ -75,7 +75,6 @@ class _GetItineraryState extends State<GetItineraryButton> {
                       "Nearest Station : ${nearestStation[0]}, at ${nearestStation[1]} meters";
                   await showYesMetroDialog(context, txt);
                 }
-                _changeState();
               }
             },
             child: Text("Get Location"),

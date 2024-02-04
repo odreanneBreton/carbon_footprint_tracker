@@ -25,10 +25,6 @@ class _MyStatsState extends State<MyStats> {
   double? finalLongitude = 0;
   List<Map> userDashboard = [
     {
-      "newKey": 0,
-      "text": "My level: 2",
-    },
-    {
       "newKey": 1,
       "text": "CO2 saved: 35k",
     },
@@ -74,25 +70,10 @@ class _MyStatsState extends State<MyStats> {
             child: ListView(
               children: [
                 const SizedBox(height: 10),
-                Container(
-                  height: 65,
-                  color: postColor,
-                  child: Row(children: [
-                    const SizedBox(width: 20),
-                    Text("           My Stats",
-                        textAlign: TextAlign.center,
-                        style: GoogleFonts.roboto(
-                          textStyle: const TextStyle(
-                            fontSize: 40,
-                            fontWeight: FontWeight.normal,
-                          ),
-                        )),
-                  ]),
-                ),
                 ListView.builder(
                   physics: const ScrollPhysics(),
                   shrinkWrap: true,
-                  itemCount: 3,
+                  itemCount: 2,
                   itemBuilder: (BuildContext context, int index) {
                     return Column(children: [
                       Container(
@@ -134,8 +115,8 @@ class _MyStatsState extends State<MyStats> {
                     ]);
                   },
                 ),
-                SizedBox(height: 50),
-                OutlinedButton(
+                SizedBox(height: 200),
+                TextButton(
                   onPressed: () async {
                     if (await LocationService().requestPermission()) {
                       LocationData locationData =
@@ -143,7 +124,8 @@ class _MyStatsState extends State<MyStats> {
                       double? currentlatitude = locationData.latitude;
                       double? currentlongitude = locationData.longitude;
                       print("Location: $currentlatitude, $currentlongitude");
-                      List nearestStation = await getDistance() ?? [];
+                      List nearestStation =
+                          await getDistanceNearestMetro() ?? [];
                       if (nearestStation == []) {
                         txt = "You are not in the metro!";
                         await showNoMetroDialog(context, txt);
@@ -157,17 +139,17 @@ class _MyStatsState extends State<MyStats> {
                       }
                     }
                   },
-                  style: OutlinedButton.styleFrom(
+                  style: TextButton.styleFrom(
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(18.0),
-                        side: BorderSide(color: Colors.red)),
-                    backgroundColor: Color.fromARGB(204, 65, 154, 40),
+                      borderRadius: BorderRadius.circular(0),
+                    ),
+                    backgroundColor: postColor,
 
                     minimumSize:
                         const Size(70, 100), // Adjust the size as needed
                   ),
                   child: Text(
-                    'New Itinerary',
+                    'NEW ITINERARY',
                     style: GoogleFonts.poppins(
                         textStyle: const TextStyle(
                       color: Color.fromARGB(255, 0, 0, 0),
@@ -176,7 +158,7 @@ class _MyStatsState extends State<MyStats> {
                   ),
                 ),
                 SizedBox(height: 50),
-                OutlinedButton(
+                TextButton(
                     onPressed: () async {
                       if (await LocationService().requestPermission()) {
                         LocationData locationData =
@@ -184,7 +166,8 @@ class _MyStatsState extends State<MyStats> {
                         double? finalLatitude = locationData.latitude;
                         double? finalLongitude = locationData.longitude;
                         print("Location: $finalLatitude, $finalLongitude");
-                        List nearestStation = await getDistance() ?? [];
+                        List nearestStation =
+                            await getDistanceNearestMetro() ?? [];
                         if (nearestStation == []) {
                           txt = "You are not in the metro!";
                           await showNoMetroDialog(context, txt);
@@ -192,35 +175,45 @@ class _MyStatsState extends State<MyStats> {
                           txt =
                               "Nearest Station : ${nearestStation[0]}, at ${nearestStation[1]} meters";
                           if (nearestStation[0] != lastStation) {
-                            double price = 1.401 *
-                                7.5 *
-                                (getRouteDistance(
-                                        currentlatitude,
-                                        currentlongitude,
+                            int price = (1.401 *
+                                    7.5 /
+                                    100000000 *
+                                    (getRouteDistance(
+                                        currentlatitude!,
+                                        currentlongitude!,
+                                        finalLatitude!,
+                                        finalLongitude!)))
+                                .round(); // 1.401 * 7.5 ) / 100000
+                            int carbon = (0.00000018 *
+                                    getRouteDistance(
+                                        currentlatitude!,
+                                        currentlongitude!,
                                         finalLatitude,
-                                        finalLongitude) /
-                                    100);
-                            carbon = await showWinMetroDialog(
+                                        finalLongitude))
+                                .round(); // 1800 kg / 10000000 m
+                            await showWinMetroDialog(
                                 context, txt, lastStation, price, carbon);
                           } else {
                             lastStation = nearestStation[0];
-
                             await showYesMetroDialog(context, txt);
                           }
                         }
                       }
                     },
-                    style: OutlinedButton.styleFrom(
+                    style: TextButton.styleFrom(
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(18.0),
-                          side: BorderSide(color: Colors.red)),
-                      backgroundColor: Color.fromARGB(204, 65, 154, 40),
+                        borderRadius: BorderRadius.circular(0),
+                        side: BorderSide(
+                          color: Colors.transparent,
+                        ),
+                      ),
+                      backgroundColor: postColor,
 
                       minimumSize:
                           const Size(70, 100), // Adjust the size as needed
                     ),
                     child: Text(
-                      'End Itinerary',
+                      'END ITINERARY',
                       style: GoogleFonts.poppins(
                           textStyle: const TextStyle(
                         color: Color.fromARGB(255, 0, 0, 0),
@@ -228,22 +221,6 @@ class _MyStatsState extends State<MyStats> {
                       )),
                     )),
                 SizedBox(height: 50),
-                Container(
-                  height: 65,
-                  color: postColor,
-                  child: Row(children: [
-                    const SizedBox(width: 20),
-                    Text("NUMBER OF TREES WON: 3",
-                        textAlign: TextAlign.left,
-                        style: GoogleFonts.roboto(
-                          textStyle: const TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        )),
-                    const SizedBox(width: 20),
-                  ]),
-                ),
               ],
             ),
           ),
