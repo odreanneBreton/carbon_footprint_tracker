@@ -63,8 +63,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         password: _passwordController.text,
                       );
                       if (message!.contains('Success')) {
-                        FirebaseDatabaseService firebaseDatabaseService;
-                        firebaseDatabaseService.addNewUser();
+         //               FirebaseDatabaseService firebaseDatabaseService;
+                       // firebaseDatabaseService.addNewUser();
                         Navigator.of(context).pushReplacement(
                           MaterialPageRoute(
                             builder: (context) => const WelcomeView(),

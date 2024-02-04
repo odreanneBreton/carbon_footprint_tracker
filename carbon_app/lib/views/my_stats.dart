@@ -1,5 +1,6 @@
 import 'package:carbon_app/constants/color.dart';
 import 'package:carbon_app/constants/routes.dart';
+import 'package:carbon_app/get_distance.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -11,6 +12,8 @@ class MyStats extends StatefulWidget {
 }
 
 class _MyStatsState extends State<MyStats> {
+  
+  double gazPrice= 140.1* getRouteDistance(1, 1,1,1);
   int _selectedIndex = 0;
   List<Map> userDashboard = [
     {
@@ -124,12 +127,20 @@ class _MyStatsState extends State<MyStats> {
                     ]);
                   },
                 ),
-                SizedBox(height: 275),
+                SizedBox(height: 175),
                 Container(
                   height: 65,
                   color: postColor,
-                  child: Row(children: [
-                    const SizedBox(width: 20),
+                  child: Column(children: [
+                    const SizedBox(width: 20),Text(("Money saved in \$: $gazPrice"),
+                        textAlign: TextAlign.left,
+                        style: GoogleFonts.roboto(
+                          textStyle: const TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        )),
+                        
                     Text("Equivalent in term of trees: 3",
                         textAlign: TextAlign.left,
                         style: GoogleFonts.roboto(
