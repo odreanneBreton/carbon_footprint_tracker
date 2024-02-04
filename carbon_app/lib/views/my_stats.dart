@@ -1,8 +1,11 @@
 import 'package:carbon_app/constants/color.dart';
 import 'package:carbon_app/constants/routes.dart';
 import 'package:carbon_app/get_distance.dart';
+import 'package:carbon_app/person.dart';
+import 'package:carbon_app/services/firestore_service.dart';
 import 'package:carbon_app/utilities/dialog.dart';
 import 'package:carbon_app/views/location_view.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:location/location.dart';
@@ -15,6 +18,7 @@ class MyStats extends StatefulWidget {
 }
 
 class _MyStatsState extends State<MyStats> {
+  FirestoreService firestore = FirestoreService();
   int n = 0;
   String txt = "";
   String lastStation = "";
@@ -191,6 +195,13 @@ class _MyStatsState extends State<MyStats> {
                                         finalLatitude,
                                         finalLongitude))
                                 .round(); // 1800 kg / 10000000 m
+
+                            Person? user = await firestore.getCurrentUser();
+
+                            if (user != null) {
+                              user.co2 = carbon.toDouble();
+                            }
+
                             await showWinMetroDialog(
                                 context, txt, lastStation, price, carbon);
                           } else {

@@ -77,7 +77,7 @@ class _UserProfileState extends State<UserProfile> {
                 TextField(
                   controller: name,
                   decoration: InputDecoration(
-                    hintText: '',
+                    hintText: 'Enter your name',
                     border: OutlineInputBorder(),
                     suffixIcon: Icon(Icons.edit),
                   ),

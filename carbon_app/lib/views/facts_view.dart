@@ -79,7 +79,7 @@ class _FactsViewState extends State<FactsView> {
                   child: Column(
                     children: [
                       SizedBox(
-                        height: 40,
+                        height: 100,
                       ),
                       Text('did you know...',
                           textAlign: TextAlign.center,
@@ -101,7 +101,7 @@ class _FactsViewState extends State<FactsView> {
                             ),
                           )),
                       SizedBox(
-                        height: 200,
+                        height: 50,
                       ),
                       Text(
                           "source: Do Something.org https://www.dosomething.org/us/facts/11-facts-about-pollution",
@@ -130,7 +130,7 @@ class _FactsViewState extends State<FactsView> {
                   child: Column(
                     children: [
                       SizedBox(
-                        height: 40,
+                        height: 100,
                       ),
                       Text('did you know...',
                           textAlign: TextAlign.center,
@@ -152,7 +152,7 @@ class _FactsViewState extends State<FactsView> {
                             ),
                           )),
                       SizedBox(
-                        height: 200,
+                        height: 50,
                       ),
                       Text(
                           "source: Do Something.org https://www.dosomething.org/us/facts/11-facts-about-pollution",
@@ -182,7 +182,7 @@ class _FactsViewState extends State<FactsView> {
                   child: Column(
                     children: [
                       SizedBox(
-                        height: 40,
+                        height: 100,
                       ),
                       Text('did you know...',
                           textAlign: TextAlign.center,
@@ -193,7 +193,7 @@ class _FactsViewState extends State<FactsView> {
                             ),
                           )),
                       SizedBox(
-                        height: 60,
+                        height: 30,
                       ),
                       Text(facts[2]["text"],
                           textAlign: TextAlign.center,
@@ -204,7 +204,7 @@ class _FactsViewState extends State<FactsView> {
                             ),
                           )),
                       SizedBox(
-                        height: 200,
+                        height: 50,
                       ),
                       Text(
                           "source: Do Something.org https://www.dosomething.org/us/facts/11-facts-about-pollution",
@@ -234,7 +234,7 @@ class _FactsViewState extends State<FactsView> {
                   child: Column(
                     children: [
                       SizedBox(
-                        height: 40,
+                        height: 100,
                       ),
                       Text('did you know...',
                           textAlign: TextAlign.center,
@@ -245,7 +245,7 @@ class _FactsViewState extends State<FactsView> {
                             ),
                           )),
                       SizedBox(
-                        height: 60,
+                        height: 30,
                       ),
                       Text(facts[2]["text"],
                           textAlign: TextAlign.center,
@@ -256,7 +256,7 @@ class _FactsViewState extends State<FactsView> {
                             ),
                           )),
                       SizedBox(
-                        height: 200,
+                        height: 50,
                       ),
                       Text(
                           "source: Do Something.org https://www.dosomething.org/us/facts/11-facts-about-pollution",
