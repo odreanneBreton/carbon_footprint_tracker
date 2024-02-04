@@ -1,5 +1,5 @@
+import 'package:carbon_app/constants/color.dart';
 import 'package:carbon_app/constants/routes.dart';
-import 'package:carbon_app/utilities/post.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -39,18 +39,18 @@ class _WelcomeViewState extends State<WelcomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 241, 255, 242),
+      backgroundColor: background_color,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(70.0),
         child: AppBar(
-          backgroundColor: Color.fromARGB(255, 170, 255, 34),
+          backgroundColor: header_color,
           foregroundColor: Color.fromARGB(255, 0, 0, 0),
           title: Center(
             child: Text(
               'GREENRIDE',
               style: GoogleFonts.lato(
                 textStyle: const TextStyle(
-                  color: Color.fromARGB(255, 0, 0, 0),
+                  color: letter_color,
                   fontSize: 40,
                   fontWeight: FontWeight.normal,
                 ),
@@ -71,7 +71,7 @@ class _WelcomeViewState extends State<WelcomeView> {
                   const SizedBox(height: 10),
                   Container(
                     height: 50,
-                    color: Color.fromARGB(255, 209, 209, 209),
+                    color: post_color,
                     child: Row(children: [
                       const SizedBox(width: 20),
                       Text(
@@ -87,24 +87,27 @@ class _WelcomeViewState extends State<WelcomeView> {
                     ]),
                   ),
                   Container(
-                    color: Color.fromARGB(255, 209, 209, 209),
+                    color: post_color,
                     child: Row(
                       children: [
                         const SizedBox(width: 20),
                         Expanded(
+                            child: Center(
                           child: Text(
                             userDashboard[index]["text"],
                           ),
-                        ),
+                        )),
                         const SizedBox(width: 20),
                       ],
                     ),
                   ),
                   Container(
-                    color: Color.fromARGB(255, 209, 209, 209),
-                    child: Row(children: [
-                      const SizedBox(height: 20),
-                    ]),
+                    color: post_color,
+                    child: const Row(
+                      children: [
+                        SizedBox(height: 20),
+                      ],
+                    ),
                   ),
                 ]);
                 // FeedPost(
@@ -124,26 +127,26 @@ class _WelcomeViewState extends State<WelcomeView> {
             BottomNavigationBarItem(
               icon: Icon(Icons.bar_chart),
               label: 'dashboard',
-              backgroundColor: Color.fromARGB(255, 183, 255, 0),
+              backgroundColor: navbar_color,
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.access_alarm),
               label: 'others',
-              backgroundColor: Color.fromARGB(255, 183, 234, 245),
+              backgroundColor: navbar_color,
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.textsms),
               label: 'new destination',
-              backgroundColor: Color.fromARGB(255, 183, 234, 245),
+              backgroundColor: navbar_color,
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.account_circle),
               label: 'settings',
-              backgroundColor: Color.fromARGB(255, 183, 234, 245),
+              backgroundColor: navbar_color,
             ),
           ],
           currentIndex: _selectedIndex,
-          selectedItemColor: Color.fromARGB(255, 37, 236, 236),
+          selectedItemColor: icon_color,
           onTap: (int index) {
             switch (index) {
               case 0:
