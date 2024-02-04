@@ -1,3 +1,5 @@
+import 'package:carbon_app/constants/routes.dart';
+import 'package:carbon_app/utilities/dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:carbon_app/constants/color.dart';
@@ -22,11 +24,11 @@ class _LocationViewState extends State<LocationView> {
         foregroundColor: letterColor,
         title: Center(
           child: Text(
-            'New Itinerary',
+            'NEW ITINERARY',
             style: GoogleFonts.montserrat(
               textStyle: const TextStyle(
                 color: letterColor,
-                fontSize: 40,
+                fontSize: 30,
                 fontWeight: FontWeight.normal,
               ),
             ),
@@ -46,6 +48,7 @@ class GetItineraryButton extends StatefulWidget {
 }
 
 class _GetItineraryState extends State<GetItineraryButton> {
+  String txt = "";
   @override
   Widget build(BuildContext context) {
     final ButtonStyle style =
@@ -59,15 +62,19 @@ class _GetItineraryState extends State<GetItineraryButton> {
             style: style,
             onPressed: () async {
               if (await LocationService().requestPermission()) {
-                LocationData locationData = await LocationService().getCurrentLocation();
+                LocationData locationData =
+                    await LocationService().getCurrentLocation();
                 double? currentlatitude = locationData.latitude;
                 double? currentlongitude = locationData.longitude;
                 print("Location: $currentlatitude, $currentlongitude");
                 List nearestStation = await getDistance() ?? [];
                 if (nearestStation == []) {
-                  print("You are not in the metro!");
+                  txt = "You are not in the metro!";
+                  await showNoMetroDialog(context, txt);
                 } else {
-                  print("Nearest Station : ${nearestStation[0]}, at ${nearestStation[1]} meters");
+                  txt =
+                      "Nearest Station : ${nearestStation[0]}, at ${nearestStation[1]} meters";
+                  await showYesMetroDialog(context, txt);
                 }
               }
             },
@@ -86,7 +93,7 @@ class LocationService {
     final permission = await location.requestPermission();
     return permission == PermissionStatus.granted;
   }
-  
+
   Future<LocationData> getCurrentLocation() async {
     bool serviceEnabled = await location.serviceEnabled();
     if (!serviceEnabled) {

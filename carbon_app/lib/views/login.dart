@@ -64,7 +64,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       );
                       if (message!.contains('Success')) {
                         FirebaseDatabaseService firebaseDatabaseService;
-                        firebaseDatabaseService.addNewUser();
+                        // firebaseDatabaseService.addNewUser();
                         Navigator.of(context).pushReplacement(
                           MaterialPageRoute(
                             builder: (context) => const WelcomeView(),

@@ -1,7 +1,11 @@
 import 'package:carbon_app/constants/color.dart';
 import 'package:carbon_app/constants/routes.dart';
+import 'package:carbon_app/get_distance.dart';
+import 'package:carbon_app/utilities/dialog.dart';
+import 'package:carbon_app/views/location_view.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:location/location.dart';
 
 class MyStats extends StatefulWidget {
   const MyStats({super.key});
@@ -11,7 +15,14 @@ class MyStats extends StatefulWidget {
 }
 
 class _MyStatsState extends State<MyStats> {
+  int n = 0;
+  String txt = "";
+  String lastStation = "";
   int _selectedIndex = 0;
+  double? currentlatitude = 0;
+  double? currentlongitude = 0;
+  double? finalLatitude = 0;
+  double? finalLongitude = 0;
   List<Map> userDashboard = [
     {
       "newKey": 0,
@@ -23,7 +34,7 @@ class _MyStatsState extends State<MyStats> {
     },
     {
       "newKey": 2,
-      "text": "Last ride: sauve metro to university of montreal metro",
+      "text": "Last ride: Sauve metro to University of Montreal metro",
     },
   ];
 
@@ -68,8 +79,8 @@ class _MyStatsState extends State<MyStats> {
                   color: postColor,
                   child: Row(children: [
                     const SizedBox(width: 20),
-                    Text("My Stats",
-                        textAlign: TextAlign.left,
+                    Text("           My Stats",
+                        textAlign: TextAlign.center,
                         style: GoogleFonts.roboto(
                           textStyle: const TextStyle(
                             fontSize: 40,
@@ -78,7 +89,6 @@ class _MyStatsState extends State<MyStats> {
                         )),
                   ]),
                 ),
-                const SizedBox(height: 10),
                 ListView.builder(
                   physics: const ScrollPhysics(),
                   shrinkWrap: true,
@@ -124,13 +134,106 @@ class _MyStatsState extends State<MyStats> {
                     ]);
                   },
                 ),
-                SizedBox(height: 275),
+                SizedBox(height: 50),
+                OutlinedButton(
+                  onPressed: () async {
+                    if (await LocationService().requestPermission()) {
+                      LocationData locationData =
+                          await LocationService().getCurrentLocation();
+                      double? currentlatitude = locationData.latitude;
+                      double? currentlongitude = locationData.longitude;
+                      print("Location: $currentlatitude, $currentlongitude");
+                      List nearestStation = await getDistance() ?? [];
+                      if (nearestStation == []) {
+                        txt = "You are not in the metro!";
+                        await showNoMetroDialog(context, txt);
+                      } else {
+                        txt =
+                            "Nearest Station : ${nearestStation[0]}, at ${nearestStation[1]} meters";
+
+                        lastStation = nearestStation[0];
+
+                        await showYesMetroDialog(context, txt);
+                      }
+                    }
+                  },
+                  style: OutlinedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(18.0),
+                        side: BorderSide(color: Colors.red)),
+                    backgroundColor: Color.fromARGB(204, 65, 154, 40),
+
+                    minimumSize:
+                        const Size(70, 100), // Adjust the size as needed
+                  ),
+                  child: Text(
+                    'New Itinerary',
+                    style: GoogleFonts.poppins(
+                        textStyle: const TextStyle(
+                      color: Color.fromARGB(255, 0, 0, 0),
+                      fontSize: 40, // Adjust the font size
+                    )),
+                  ),
+                ),
+                SizedBox(height: 50),
+                OutlinedButton(
+                    onPressed: () async {
+                      if (await LocationService().requestPermission()) {
+                        LocationData locationData =
+                            await LocationService().getCurrentLocation();
+                        double? finalLatitude = locationData.latitude;
+                        double? finalLongitude = locationData.longitude;
+                        print("Location: $finalLatitude, $finalLongitude");
+                        List nearestStation = await getDistance() ?? [];
+                        if (nearestStation == []) {
+                          txt = "You are not in the metro!";
+                          await showNoMetroDialog(context, txt);
+                        } else {
+                          txt =
+                              "Nearest Station : ${nearestStation[0]}, at ${nearestStation[1]} meters";
+                          if (nearestStation[0] != lastStation) {
+                            double price = 1.401 *
+                                7.5 *
+                                (getRouteDistance(
+                                        currentlatitude,
+                                        currentlongitude,
+                                        finalLatitude,
+                                        finalLongitude) /
+                                    100);
+                            carbon = await showWinMetroDialog(
+                                context, txt, lastStation, price, carbon);
+                          } else {
+                            lastStation = nearestStation[0];
+
+                            await showYesMetroDialog(context, txt);
+                          }
+                        }
+                      }
+                    },
+                    style: OutlinedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(18.0),
+                          side: BorderSide(color: Colors.red)),
+                      backgroundColor: Color.fromARGB(204, 65, 154, 40),
+
+                      minimumSize:
+                          const Size(70, 100), // Adjust the size as needed
+                    ),
+                    child: Text(
+                      'End Itinerary',
+                      style: GoogleFonts.poppins(
+                          textStyle: const TextStyle(
+                        color: Color.fromARGB(255, 0, 0, 0),
+                        fontSize: 40, // Adjust the font size
+                      )),
+                    )),
+                SizedBox(height: 50),
                 Container(
                   height: 65,
                   color: postColor,
                   child: Row(children: [
                     const SizedBox(width: 20),
-                    Text("Equivalent in term of trees: 3",
+                    Text("NUMBER OF TREES WON: 3",
                         textAlign: TextAlign.left,
                         style: GoogleFonts.roboto(
                           textStyle: const TextStyle(
@@ -194,6 +297,28 @@ class _MyStatsState extends State<MyStats> {
               );
             }),
       ),
+    );
+  }
+}
+
+Text getText(int selector) {
+  if (selector == 0) {
+    return Text(
+      'New Itinerary',
+      style: GoogleFonts.poppins(
+          textStyle: const TextStyle(
+        color: Color.fromARGB(255, 0, 0, 0),
+        fontSize: 40, // Adjust the font size
+      )),
+    );
+  } else {
+    return Text(
+      'Finish Itinerary',
+      style: GoogleFonts.poppins(
+          textStyle: const TextStyle(
+        color: Color.fromARGB(255, 0, 0, 0),
+        fontSize: 40, // Adjust the font size
+      )),
     );
   }
 }
