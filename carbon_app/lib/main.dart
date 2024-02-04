@@ -21,7 +21,6 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  await FirebaseAuth.instance.useAuthEmulator('localhost', 9099);
 
   runApp(
     MaterialApp(
@@ -32,7 +31,7 @@ void main() async {
       home: const HomePage(),
       routes: {
         // Pour se promener de pages en pages
-        welcomeRoute: (context) => const WelcomeView(),
+        dashboardRoute: (context) => const WelcomeView(),
         authRoute: (context) => AuthView(),
         loginRoute: (context) => const LoginScreen(),
         myStats: (context) => const MyStats(),
@@ -50,6 +49,6 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return WelcomeView();
+    return AuthView();
   }
 }

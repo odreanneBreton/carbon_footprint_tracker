@@ -15,24 +15,19 @@ class _MyStatsState extends State<MyStats> {
   List<Map> userDashboard = [
     {
       "newKey": 0,
-      "user": "Rebecca",
-      "Carbon": "74874",
-      "text": "Rebecca just reached Level 2: 60 Mt CO2 saved!",
-      "time": "one minute ago"
+      "text": "my level: 2",
     },
     {
       "newKey": 1,
-      "user": "Julien",
-      "Carbon": "500000000000000000",
-      "text": "omg saint jerome is so far but luckily i took public transport!",
-      "time": "one minute ago"
+      "text": "CO2 saved: 35k",
     },
     {
       "newKey": 2,
-      "user": "Julien",
-      "Carbon": "74874",
-      "text": "just going to poly....",
-      "time": "two hours ago"
+      "text": "last ride: sauve metro to university of montreal metro",
+    },
+    {
+      "newKey": 3,
+      "text": "CO2 saved: 1k",
     },
   ];
 
@@ -60,113 +55,148 @@ class _MyStatsState extends State<MyStats> {
             ),
           ),
         ),
-        body: Stack(
-          children: [
-            SingleChildScrollView(
-              child: Column(
-                children: <Widget>[
-                  SizedBox(
-                    height: 20,
-                  ),
-                  StatefulBuilder(
-                    builder: (BuildContext context, StateSetter setState) {
-                      return Center(
-                        child: Column(
+        body: Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              opacity: 0.9,
+              image: AssetImage("assets/tree.jpg"),
+              fit: BoxFit.cover,
+            ),
+          ),
+          child: Center(
+            child: ListView(
+              children: [
+                const SizedBox(height: 10),
+                Container(
+                  height: 65,
+                  color: postColor,
+                  child: Row(children: [
+                    const SizedBox(width: 20),
+                    Text("my stats",
+                        textAlign: TextAlign.left,
+                        style: GoogleFonts.roboto(
+                          textStyle: const TextStyle(
+                            fontSize: 40,
+                            fontWeight: FontWeight.normal,
+                          ),
+                        )),
+                  ]),
+                ),
+                const SizedBox(height: 10),
+                ListView.builder(
+                  physics: const ScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: 3,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Column(children: [
+                      Container(
+                        color: postColor,
+                        child: const Row(
                           children: [
-                            Text(
-                              "my stats",
-                              style: GoogleFonts.kanit(
-                                textStyle: const TextStyle(
-                                  fontSize: 40,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              height: 30,
-                            ),
-                            Text(
-                              "500 Mt CO2 saved!",
-                              style: GoogleFonts.kanit(
-                                textStyle: const TextStyle(
-                                  fontSize: 40,
-                                  fontWeight: FontWeight.normal,
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              height: 30,
-                            ),
-                            Text(
-                              "last rides:",
-                              style: GoogleFonts.kanit(
-                                textStyle: const TextStyle(
-                                  fontSize: 40,
-                                  fontWeight: FontWeight.normal,
-                                ),
-                              ),
-                            ),
+                            SizedBox(height: 20),
                           ],
                         ),
-                      );
-                    },
-                  ),
-                ],
-              ),
+                      ),
+                      Container(
+                        color: postColor,
+                        child: Row(
+                          children: [
+                            const SizedBox(width: 20),
+                            Expanded(
+                                child: Center(
+                              child: Text(userDashboard[index]["text"],
+                                  textAlign: TextAlign.center,
+                                  style: GoogleFonts.roboto(
+                                    textStyle: const TextStyle(
+                                      fontSize: 23,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  )),
+                            )),
+                            const SizedBox(width: 20),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        color: postColor,
+                        child: const Row(
+                          children: [
+                            SizedBox(height: 20),
+                          ],
+                        ),
+                      ),
+                    ]);
+                  },
+                ),
+                SizedBox(height: 275),
+                Container(
+                  height: 65,
+                  color: postColor,
+                  child: Row(children: [
+                    const SizedBox(width: 20),
+                    Text("equivalent in term of trees: 3",
+                        textAlign: TextAlign.left,
+                        style: GoogleFonts.roboto(
+                          textStyle: const TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        )),
+                    const SizedBox(width: 20),
+                  ]),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
         bottomNavigationBar: BottomNavigationBar(
-          iconSize: 45,
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.grass_outlined),
-              label: 'me',
-              backgroundColor: navbarColor,
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.bar_chart),
-              label: 'others',
-              backgroundColor: navbarColor,
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.emoji_objects),
-              label: 'knowledge',
-              backgroundColor: navbarColor,
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.account_circle),
-              label: 'profile',
-              backgroundColor: navbarColor,
-            ),
-          ],
-          currentIndex: _selectedIndex,
-          selectedItemColor: iconColor,
-          onTap: (int index) {
-            switch (index) {
-              case 0:
-                Navigator.of(context)
-                    .pushNamedAndRemoveUntil(welcomeRoute, (route) => false);
-                break;
-              case 1:
-                Navigator.of(context)
-                    .pushNamedAndRemoveUntil(welcomeRoute, (route) => false);
-                break;
-              case 2:
-                Navigator.of(context)
-                    .pushNamedAndRemoveUntil(welcomeRoute, (route) => false);
-                break;
-              case 3:
-                Navigator.of(context)
-                    .pushNamedAndRemoveUntil(welcomeRoute, (route) => false);
-                break;
+            iconSize: 45,
+            items: const <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                icon: Icon(Icons.grass_outlined),
+                label: 'me',
+                backgroundColor: navbarColor,
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.emoji_emotions),
+                label: 'others',
+                backgroundColor: navbarColor,
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.emoji_objects),
+                label: 'knowledge',
+                backgroundColor: navbarColor,
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.account_circle),
+                label: 'profile',
+                backgroundColor: navbarColor,
+              ),
+            ],
+            currentIndex: _selectedIndex,
+            selectedItemColor: iconColor,
+            onTap: (int index) {
+              switch (index) {
+                case 0:
+                  Navigator.of(context)
+                      .pushNamedAndRemoveUntil(myStats, (route) => false);
+                case 1:
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                      dashboardRoute, (route) => false);
+                case 2:
+                  Navigator.of(context)
+                      .pushNamedAndRemoveUntil(facts, (route) => false);
 
-            }
-            setState(() {
-              _selectedIndex = index;
-            });
-          },
-        ),
+                case 3:
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                      dashboardRoute, (route) => false);
+              }
+              setState(
+                () {
+                  _selectedIndex = index;
+                },
+              );
+            }),
       ),
     );
   }

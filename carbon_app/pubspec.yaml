@@ -37,6 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   firebase_core: ^2.25.3
   firebase_auth: ^4.17.3
+  csv: ^5.1.1
   location: 
       git:
         url: https://github.com/781flyingdutchman/flutterlocation.git

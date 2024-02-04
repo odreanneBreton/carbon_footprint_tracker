@@ -71,9 +71,8 @@ class _FactsViewState extends State<FactsView> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8.0),
                     image: DecorationImage(
-                      opacity: 0.6,
-                      image: NetworkImage(
-                          "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.rvSWtRd_oPRTwDoTCmkP5gAAAA%26pid%3DApi&f=1&ipt=4eff9a5d7d22249208e9472e985283aee53c7c785e9265810c51f0f39de585bc&ipo=images"),
+                      opacity: 0.7,
+                      image: AssetImage("assets/montagnes.jpg"),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -123,7 +122,8 @@ class _FactsViewState extends State<FactsView> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8.0),
                     image: DecorationImage(
-                      image: AssetImage("assets/montagnes.jpg"),
+                      opacity: 0.3,
+                      image: AssetImage("assets/tree.jpg"),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -192,7 +192,7 @@ class _FactsViewState extends State<FactsView> {
               backgroundColor: navbarColor,
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.bar_chart),
+              icon: Icon(Icons.emoji_emotions),
               label: 'others',
               backgroundColor: navbarColor,
             ),
@@ -210,21 +210,24 @@ class _FactsViewState extends State<FactsView> {
           currentIndex: _selectedIndex,
           selectedItemColor: iconColor,
           onTap: (int index) {
-           switch (index) {
-                case 0:
-                  Navigator.of(context)
-                      .pushNamedAndRemoveUntil(myStats, (route) => false);
-                case 1:
-                  Navigator.of(context)
-                      .pushNamedAndRemoveUntil(welcomeRoute, (route) => false);
-                case 2:
-                  Navigator.of(context)
-                      .pushNamedAndRemoveUntil(welcomeRoute, (route) => false);
-
-                case 3:
-                  Navigator.of(context)
-                      .pushNamedAndRemoveUntil(profile, (route) => false);
-              }
+            switch (index) {
+              case 0:
+                Navigator.of(context)
+                    .pushNamedAndRemoveUntil(dashboardRoute, (route) => false);
+                break;
+              case 1:
+                Navigator.of(context)
+                    .pushNamedAndRemoveUntil(dashboardRoute, (route) => false);
+                break;
+              case 2:
+                Navigator.of(context)
+                    .pushNamedAndRemoveUntil(dashboardRoute, (route) => false);
+                break;
+              case 3:
+                Navigator.of(context)
+                    .pushNamedAndRemoveUntil(dashboardRoute, (route) => false);
+                break;
+            }
             setState(() {
               _selectedIndex = index;
             });
