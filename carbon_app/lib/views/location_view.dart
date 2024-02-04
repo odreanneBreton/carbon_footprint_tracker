@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:carbon_app/constants/color.dart';
 import 'package:location/location.dart';
+import 'package:carbon_app/get_distance.dart';
 
 class LocationView extends StatefulWidget {
   const LocationView({super.key});
@@ -62,6 +63,12 @@ class _GetItineraryState extends State<GetItineraryButton> {
                 double? currentlatitude = locationData.latitude;
                 double? currentlongitude = locationData.longitude;
                 print("Location: $currentlatitude, $currentlongitude");
+                List nearestStation = await getDistance() ?? [];
+                if (nearestStation == []) {
+                  print("You are not in the metro!");
+                } else {
+                  print("Nearest Station : ${nearestStation[0]}, at ${nearestStation[1]} meters");
+                }
               }
             },
             child: Text("Get Location"),

@@ -84,8 +84,8 @@ class _WelcomeViewState extends State<WelcomeView> {
         body: Container(
           decoration: const BoxDecoration(
             image: DecorationImage(
-              opacity: 0.9,
-              image: AssetImage("assets/grass.jpg"),
+              opacity: 0.5,
+              image: AssetImage("assets/leaf.jpeg"),
               fit: BoxFit.cover,
             ),
           ),

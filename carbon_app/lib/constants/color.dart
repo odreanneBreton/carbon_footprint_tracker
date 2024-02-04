@@ -7,4 +7,4 @@ const headerColor = Color(0xff1c7c54);
 const letterColor = Color.fromARGB(255, 223, 255, 219);
 const navbarColor = Color(0xff1c7c54);
 const iconColor = Color(0xffb1cf5f);
-const postColor = Color.fromARGB(146, 227, 233, 211);
+const postColor = Color.fromARGB(146, 211, 211, 211);
