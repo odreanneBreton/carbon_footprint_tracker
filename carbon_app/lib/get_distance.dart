@@ -1,5 +1,5 @@
 import 'dart:math';
-
+import 'package:carbon_app/unit_converter.dart';
 import 'package:carbon_app/views/location_view.dart';
 import 'package:csv/csv.dart';
 import 'package:location/location.dart';
@@ -11,7 +11,7 @@ Future<List<List<dynamic>>> readCsv() async {
   return csvTable;
 }
 
-Future<List> getDistance () async {
+Future<List?> getDistance () async {
   List<List<dynamic>> csvTable = await readCsv();
   LocationData locationData = await LocationService().getCurrentLocation();
   double? currentLatitude = locationData.latitude;
@@ -25,9 +25,7 @@ Future<List> getDistance () async {
   double distance = 0;
   String station = "";
   for (List tuple in metroCoords) {
-    double x = currentLongitude! - tuple[1];
-    double y = currentLatitude! - tuple[2];
-    double newDistance = sqrt((pow(x, 2) + pow(y, 2)));
+    double newDistance = haversineDistance(currentLatitude!, currentLongitude!, tuple[2], tuple[1]) * 1000;
     if (i == 0) {
       distance = newDistance;
       i = 1;
@@ -38,5 +36,12 @@ Future<List> getDistance () async {
     }
   }
   List info = [station, distance];
-  return info;
+  if (distance <= 100) {
+      return info;
+  } else{
+    return null;
+  }
+
 }
+
+
