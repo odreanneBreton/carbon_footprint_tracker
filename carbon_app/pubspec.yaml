@@ -37,6 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   firebase_core: ^2.25.3
   firebase_auth: ^4.17.3
+  csv: ^5.1.1
   location: 
       git:
         url: https://github.com/781flyingdutchman/flutterlocation.git
@@ -70,7 +71,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:   
-    - assets/
+    - assets/GreenRide.csv
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
