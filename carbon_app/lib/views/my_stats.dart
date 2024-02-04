@@ -181,11 +181,11 @@ class _MyStatsState extends State<MyStats> {
                       dashboardRoute, (route) => false);
                 case 2:
                   Navigator.of(context)
-                      .pushNamedAndRemoveUntil(facts, (route) => false);
+                      .pushNamedAndRemoveUntil(factsRoute, (route) => false);
 
                 case 3:
-                  Navigator.of(context).pushNamedAndRemoveUntil(
-                      dashboardRoute, (route) => false);
+                  Navigator.of(context)
+                      .pushNamedAndRemoveUntil(profile, (route) => false);
               }
               setState(
                 () {

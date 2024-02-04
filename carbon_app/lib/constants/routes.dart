@@ -4,5 +4,5 @@ const authRoute = "/auth/";
 const loginRoute = "/login/";
 const createAccountRoute = "/signup/";
 const myStats = "/myStats/";
-const facts = "/facts/";
+const factsRoute = "/facts/";
 const profile = "/profile/";

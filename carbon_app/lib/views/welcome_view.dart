@@ -203,7 +203,7 @@ class _WelcomeViewState extends State<WelcomeView> {
                       dashboardRoute, (route) => false);
                 case 2:
                   Navigator.of(context)
-                      .pushNamedAndRemoveUntil(facts, (route) => false);
+                      .pushNamedAndRemoveUntil(factsRoute, (route) => false);
 
                 case 3:
                   Navigator.of(context)

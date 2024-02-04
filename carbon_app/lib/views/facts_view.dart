@@ -316,7 +316,7 @@ class _FactsViewState extends State<FactsView> {
             switch (index) {
               case 0:
                 Navigator.of(context)
-                    .pushNamedAndRemoveUntil(dashboardRoute, (route) => false);
+                    .pushNamedAndRemoveUntil(myStats, (route) => false);
                 break;
               case 1:
                 Navigator.of(context)
@@ -324,11 +324,11 @@ class _FactsViewState extends State<FactsView> {
                 break;
               case 2:
                 Navigator.of(context)
-                    .pushNamedAndRemoveUntil(dashboardRoute, (route) => false);
+                    .pushNamedAndRemoveUntil(factsRoute, (route) => false);
                 break;
               case 3:
                 Navigator.of(context)
-                    .pushNamedAndRemoveUntil(dashboardRoute, (route) => false);
+                    .pushNamedAndRemoveUntil(profile, (route) => false);
                 break;
             }
             setState(() {

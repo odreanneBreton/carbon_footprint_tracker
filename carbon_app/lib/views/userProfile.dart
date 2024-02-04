@@ -14,79 +14,106 @@ class _UserProfileState extends State<UserProfile> {
   int _selectedIndex = 3;
 
   // Corrected variable declarations
-  String name = "-"; // Placeholder for user's name
-  String email = "ss"; // Corrected syntax
-  String password = "dd-"; // Corrected syntax
+  String name = ""; // Placeholder for user's name
+  String email = ""; // Corrected syntax
+  String password = ""; // Corrected syntax
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        backgroundColor: backgroundColor,
         appBar: AppBar(
-          title: Text('User Profile', style: GoogleFonts.lato()),
-          backgroundColor: Theme.of(context).primaryColor,
-        ),
-        body: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Your Name',
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-              ),
-              SizedBox(height: 8), // Add some spacing
-              TextField(
-                controller: TextEditingController(text: name),
-                decoration: InputDecoration(
-                  hintText: 'Enter your name',
-                  border: OutlineInputBorder(),
-                  suffixIcon: Icon(Icons.edit),
+          backgroundColor: headerColor,
+          foregroundColor: Color.fromARGB(255, 0, 0, 0),
+          title: Center(
+            child: Text(
+              'PROFILE',
+              style: GoogleFonts.lato(
+                textStyle: const TextStyle(
+                  color: letterColor,
+                  fontSize: 40,
+                  fontWeight: FontWeight.normal,
                 ),
-                onChanged: (value) {
-                  setState(() {
-                    name = value;
-                  });
-                },
-              ),Text(
-                'Your Email',
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
-              SizedBox(height: 8), // Add some spacing
-              TextField(
-                controller: TextEditingController(text: email),
-                decoration: InputDecoration(
-                  hintText: 'Enter your email address',
-                  border: OutlineInputBorder(),
-                  suffixIcon: Icon(Icons.edit),
-                ),
-                onChanged: (value) {
-                  setState(() {
-                    email = value;
-                  });
-                },
-              ),
-              Text(
-                'Your password',
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-              ),
-              SizedBox(height: 8), // Add some spacing
-              TextField(
-                controller: TextEditingController(text: password),
-                decoration: InputDecoration(
-                  hintText: 'Enter your password',
-                  border: OutlineInputBorder(),
-                  suffixIcon: Icon(Icons.edit),
-                ),
-                onChanged: (value) {
-                  setState(() {
-                    password = value;
-                  });
-                },
-              ),
-                         ],
+            ),
           ),
-        ),bottomNavigationBar: BottomNavigationBar(
+        ),
+        body: Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              opacity: 0.5,
+              image: AssetImage("assets/leaf2.png"),
+              fit: BoxFit.cover,
+            ),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Your Name',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(height: 8), // Add some spacing
+                TextField(
+                  controller: TextEditingController(text: name),
+                  decoration: InputDecoration(
+                    hintText: 'Enter your name',
+                    border: OutlineInputBorder(),
+                    suffixIcon: Icon(Icons.edit),
+                  ),
+                  onChanged: (value) {
+                    setState(() {
+                      name = value;
+                    });
+                  },
+                ),
+                Text(
+                  'Your Email',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(height: 8), // Add some spacing
+                TextField(
+                  controller: TextEditingController(text: email),
+                  decoration: InputDecoration(
+                    hintText: 'Enter your email address',
+                    border: OutlineInputBorder(),
+                    suffixIcon: Icon(Icons.edit),
+                  ),
+                  onChanged: (value) {
+                    setState(() {
+                      email = value;
+                    });
+                  },
+                ),
+                Text(
+                  'Your password',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(height: 8), // Add some spacing
+                TextField(
+                  controller: TextEditingController(text: password),
+                  obscureText: true,
+                  enableSuggestions: false,
+                  autocorrect: false,
+                  decoration: InputDecoration(
+                    hintText: 'Enter your current password first',
+                    border: OutlineInputBorder(),
+                    suffixIcon: Icon(Icons.lock),
+                  ),
+                  onChanged: (value) {
+                    setState(() {
+                      password = value;
+                    });
+                  },
+                ),
+              ],
+            ),
+          ),
+        ),
+        bottomNavigationBar: BottomNavigationBar(
           iconSize: 45,
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
@@ -95,7 +122,7 @@ class _UserProfileState extends State<UserProfile> {
               backgroundColor: navbarColor,
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.bar_chart),
+              icon: Icon(Icons.emoji_emotions),
               label: 'others',
               backgroundColor: navbarColor,
             ),
@@ -114,27 +141,26 @@ class _UserProfileState extends State<UserProfile> {
           selectedItemColor: iconColor,
           onTap: (int index) {
             switch (index) {
-                case 0:
-                  Navigator.of(context)
-                      .pushNamedAndRemoveUntil(myStats, (route) => false);
-                case 1:
-                  Navigator.of(context)
-                      .pushNamedAndRemoveUntil(dashboardRoute, (route) => false);
-                case 2:
-                  Navigator.of(context)
-                      .pushNamedAndRemoveUntil(facts, (route) => false);
+              case 0:
+                Navigator.of(context)
+                    .pushNamedAndRemoveUntil(myStats, (route) => false);
+              case 1:
+                Navigator.of(context)
+                    .pushNamedAndRemoveUntil(dashboardRoute, (route) => false);
+              case 2:
+                Navigator.of(context)
+                    .pushNamedAndRemoveUntil(factsRoute, (route) => false);
 
-                case 3:
-                  Navigator.of(context)
-                      .pushNamedAndRemoveUntil(profile, (route) => false);
-              }
+              case 3:
+                Navigator.of(context)
+                    .pushNamedAndRemoveUntil(profile, (route) => false);
+            }
             setState(() {
               _selectedIndex = index;
             });
           },
         ),
       ),
-      
     );
   }
 }
