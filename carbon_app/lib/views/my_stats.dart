@@ -196,12 +196,6 @@ class _MyStatsState extends State<MyStats> {
                                         finalLongitude))
                                 .round(); // 1800 kg / 10000000 m
 
-                            Person? user = await firestore.getCurrentUser();
-
-                            if (user != null) {
-                              user.co2 = carbon.toDouble();
-                            }
-
                             await showWinMetroDialog(
                                 context, txt, lastStation, price, carbon);
                           } else {
