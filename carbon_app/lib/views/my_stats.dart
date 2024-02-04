@@ -3,15 +3,15 @@ import 'package:carbon_app/constants/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class WelcomeView extends StatefulWidget {
-  const WelcomeView({super.key});
+class MyStats extends StatefulWidget {
+  const MyStats({super.key});
 
   @override
-  State<WelcomeView> createState() => _WelcomeViewState();
+  State<MyStats> createState() => _MyStatsState();
 }
 
-class _WelcomeViewState extends State<WelcomeView> {
-  int _selectedIndex = 1;
+class _MyStatsState extends State<MyStats> {
+  int _selectedIndex = 0;
   List<Map> userDashboard = [
     {
       "newKey": 0,
@@ -164,7 +164,7 @@ class _WelcomeViewState extends State<WelcomeView> {
             switch (index) {
               case 0:
                 Navigator.of(context)
-                    .pushNamedAndRemoveUntil(myStats, (route) => false);
+                    .pushNamedAndRemoveUntil(welcomeRoute, (route) => false);
               case 1:
                 Navigator.of(context)
                     .pushNamedAndRemoveUntil(welcomeRoute, (route) => false);

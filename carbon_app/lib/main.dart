@@ -1,5 +1,6 @@
 //routes
 import 'package:carbon_app/constants/routes.dart';
+import 'package:carbon_app/views/my_stats.dart';
 import 'package:carbon_app/views/welcome_view.dart';
 import 'package:carbon_app/views/location_view.dart';
 import 'package:carbon_app/views/auth.dart';
@@ -30,7 +31,7 @@ Future<void> main() async {
         welcomeRoute: (context) => const WelcomeView(),
         locationRoute: (context) => const LocationView(),
         authRoute: (context) => AuthPage(),
-
+        myStats: (context) => const MyStats(),
       },
     ),
   );
@@ -44,4 +45,3 @@ class HomePage extends StatelessWidget {
     return const WelcomeView();
   }
 }
-
