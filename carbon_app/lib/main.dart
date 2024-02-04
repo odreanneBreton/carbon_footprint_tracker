@@ -3,8 +3,8 @@ import 'package:carbon_app/constants/routes.dart';
 import 'package:carbon_app/views/my_stats.dart';
 import 'package:carbon_app/views/welcome_view.dart';
 import 'package:carbon_app/views/auth.dart';
-import 'package:carbon_app/views/signup.dart';
-import 'package:carbon_app/views/login_view.dart';
+import 'package:carbon_app/views/create_account.dart';
+import 'package:carbon_app/views/login.dart';
 
 import 'package:flutter/material.dart';
 
@@ -13,7 +13,7 @@ import 'firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-Future<void> main() async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await Firebase.initializeApp(
@@ -31,9 +31,10 @@ Future<void> main() async {
       routes: {
         // Pour se promener de pages en pages
         welcomeRoute: (context) => const WelcomeView(),
-        authRoute: (context) => AuthPage(),
-        loginRoute: (context) => AuthPage(),
+        authRoute: (context) => AuthView(),
+        loginRoute: (context) => const LoginScreen(),
         myStats: (context) => const MyStats(),
+        createAccountRoute: (context) => const CreateAccount(),
       },
     ),
   );
@@ -44,6 +45,6 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AuthPage();
+    return AuthView();
   }
 }
