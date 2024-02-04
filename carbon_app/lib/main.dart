@@ -1,5 +1,6 @@
 //routes
 import 'package:carbon_app/constants/routes.dart';
+import 'package:carbon_app/views/my_stats.dart';
 import 'package:carbon_app/views/welcome_view.dart';
 import 'package:carbon_app/views/auth.dart';
 import 'package:carbon_app/views/signup.dart';
@@ -31,7 +32,8 @@ Future<void> main() async {
         // Pour se promener de pages en pages
         welcomeRoute: (context) => const WelcomeView(),
         authRoute: (context) => AuthPage(),
-        loginRoute: (context) => AuthPage()
+        loginRoute: (context) => AuthPage(),
+        myStats: (context) => const MyStats(),
       },
     ),
   );

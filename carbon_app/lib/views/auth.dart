@@ -10,7 +10,7 @@ class AuthPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Authentication'),
-        backgroundColor: background_color,
+        backgroundColor: backgroundColor,
       ),
       body: Center(
         child: Padding(

@@ -1,3 +1,4 @@
+import 'package:carbon_app/constants/color.dart';
 import 'package:carbon_app/constants/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -10,7 +11,7 @@ class WelcomeView extends StatefulWidget {
 }
 
 class _WelcomeViewState extends State<WelcomeView> {
-  int _selectedIndex = 0;
+  int _selectedIndex = 1;
   List<Map> userDashboard = [
     {
       "newKey": 0,
@@ -38,18 +39,18 @@ class _WelcomeViewState extends State<WelcomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 241, 255, 242),
+      backgroundColor: backgroundColor,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(70.0),
         child: AppBar(
-          backgroundColor: Color.fromARGB(255, 170, 255, 34),
+          backgroundColor: headerColor,
           foregroundColor: Color.fromARGB(255, 0, 0, 0),
           title: Center(
             child: Text(
               'GREENRIDE',
               style: GoogleFonts.lato(
                 textStyle: const TextStyle(
-                  color: Color.fromARGB(255, 0, 0, 0),
+                  color: letterColor,
                   fontSize: 40,
                   fontWeight: FontWeight.normal,
                 ),
@@ -70,40 +71,56 @@ class _WelcomeViewState extends State<WelcomeView> {
                   const SizedBox(height: 10),
                   Container(
                     height: 50,
-                    color: Color.fromARGB(255, 209, 209, 209),
+                    color: postColor,
                     child: Row(children: [
                       const SizedBox(width: 20),
-                      Text(
-                        userDashboard[index]["user"],
-                        textAlign: TextAlign.left,
-                      ),
-                      Spacer(),
-                      Text(
-                        userDashboard[index]["Carbon"],
-                        textAlign: TextAlign.right,
-                      ),
+                      Text(userDashboard[index]["user"],
+                          textAlign: TextAlign.left,
+                          style: GoogleFonts.roboto(
+                            textStyle: const TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.normal,
+                            ),
+                          )),
+                      const Spacer(),
+                      Text(userDashboard[index]["Carbon"],
+                          textAlign: TextAlign.right,
+                          style: GoogleFonts.roboto(
+                            textStyle: const TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.normal,
+                            ),
+                          )),
                       const SizedBox(width: 20),
                     ]),
                   ),
                   Container(
-                    color: Color.fromARGB(255, 209, 209, 209),
+                    color: postColor,
                     child: Row(
                       children: [
                         const SizedBox(width: 20),
                         Expanded(
-                          child: Text(
-                            userDashboard[index]["text"],
-                          ),
-                        ),
+                            child: Center(
+                          child: Text(userDashboard[index]["text"],
+                              textAlign: TextAlign.center,
+                              style: GoogleFonts.roboto(
+                                textStyle: const TextStyle(
+                                  fontSize: 23,
+                                  fontWeight: FontWeight.normal,
+                                ),
+                              )),
+                        )),
                         const SizedBox(width: 20),
                       ],
                     ),
                   ),
                   Container(
-                    color: Color.fromARGB(255, 209, 209, 209),
-                    child: Row(children: [
-                      const SizedBox(height: 20),
-                    ]),
+                    color: postColor,
+                    child: const Row(
+                      children: [
+                        SizedBox(height: 20),
+                      ],
+                    ),
                   ),
                 ]);
                 // FeedPost(
@@ -121,33 +138,33 @@ class _WelcomeViewState extends State<WelcomeView> {
           iconSize: 45,
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
+              icon: Icon(Icons.grass_outlined),
+              label: 'me',
+              backgroundColor: navbarColor,
+            ),
+            BottomNavigationBarItem(
               icon: Icon(Icons.bar_chart),
-              label: 'dashboard',
-              backgroundColor: Color.fromARGB(255, 183, 255, 0),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.access_alarm),
               label: 'others',
-              backgroundColor: Color.fromARGB(255, 183, 234, 245),
+              backgroundColor: navbarColor,
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.textsms),
-              label: 'new destination',
-              backgroundColor: Color.fromARGB(255, 183, 234, 245),
+              icon: Icon(Icons.emoji_objects),
+              label: 'knowledge',
+              backgroundColor: navbarColor,
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.account_circle),
-              label: 'settings',
-              backgroundColor: Color.fromARGB(255, 183, 234, 245),
+              label: 'profile',
+              backgroundColor: navbarColor,
             ),
           ],
           currentIndex: _selectedIndex,
-          selectedItemColor: Color.fromARGB(255, 37, 236, 236),
+          selectedItemColor: iconColor,
           onTap: (int index) {
             switch (index) {
               case 0:
                 Navigator.of(context)
-                    .pushNamedAndRemoveUntil(welcomeRoute, (route) => false);
+                    .pushNamedAndRemoveUntil(myStats, (route) => false);
               case 1:
                 Navigator.of(context)
                     .pushNamedAndRemoveUntil(welcomeRoute, (route) => false);
