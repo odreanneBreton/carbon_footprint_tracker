@@ -58,7 +58,7 @@ class _MyStatsState extends State<MyStats> {
         body: Container(
           decoration: const BoxDecoration(
             image: DecorationImage(
-              opacity: 0.9,
+              opacity: 0.5,
               image: AssetImage("assets/tree.jpg"),
               fit: BoxFit.cover,
             ),
