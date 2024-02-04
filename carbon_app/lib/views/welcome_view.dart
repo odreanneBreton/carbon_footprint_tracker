@@ -15,22 +15,43 @@ class _WelcomeViewState extends State<WelcomeView> {
   List<Map> userDashboard = [
     {
       "newKey": 0,
-      "user": "Rebecca",
-      "Carbon": "74874",
-      "text": "Rebecca just reached Level 2: 60 Mt CO2 saved!",
+      "user": "REBECCA",
+      "Carbon": "2T CO2 SAVED",
+      "text": "REBECCA just reached Level 2: 60 t CO2 saved!",
       "time": "one minute ago"
     },
     {
       "newKey": 1,
-      "user": "Julien",
-      "Carbon": "500000000000000000",
+      "user": "JULIEN",
+      "Carbon": "1T CO2 SAVED",
       "text": "omg saint jerome is so far but luckily i took public transport!",
       "time": "one minute ago"
     },
     {
       "newKey": 2,
-      "user": "Julien",
-      "Carbon": "74874",
+      "user": "FELIX",
+      "Carbon": "0.5K CO2 SAVED",
+      "text": "FELIX just reached Level 2: 60 t CO2 saved!",
+      "time": "two hours ago"
+    },
+    {
+      "newKey": 3,
+      "user": "ODREANNE",
+      "Carbon": "1K CO2 SAVED",
+      "text": "just going to poly....",
+      "time": "two hours ago"
+    },
+    {
+      "newKey": 4,
+      "user": "RAPHAEL",
+      "Carbon": "0.1K CO2 SAVED",
+      "text": "just going to poly....",
+      "time": "two hours ago"
+    },
+    {
+      "newKey": 5,
+      "user": "RAPHAEL",
+      "Carbon": "0.1K CO2 SAVED",
       "text": "just going to poly....",
       "time": "two hours ago"
     },
@@ -69,12 +90,12 @@ class _WelcomeViewState extends State<WelcomeView> {
             ),
           ),
           child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
+            child: ListView(
               children: [
                 ListView.builder(
+                  physics: const ScrollPhysics(),
                   shrinkWrap: true,
-                  itemCount: 3,
+                  itemCount: 6,
                   itemBuilder: (BuildContext context, int index) {
                     return Column(children: [
                       const SizedBox(height: 10),
@@ -105,6 +126,14 @@ class _WelcomeViewState extends State<WelcomeView> {
                       ),
                       Container(
                         color: postColor,
+                        child: const Row(
+                          children: [
+                            SizedBox(height: 20),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        color: postColor,
                         child: Row(
                           children: [
                             const SizedBox(width: 20),
@@ -115,7 +144,7 @@ class _WelcomeViewState extends State<WelcomeView> {
                                   style: GoogleFonts.roboto(
                                     textStyle: const TextStyle(
                                       fontSize: 23,
-                                      fontWeight: FontWeight.normal,
+                                      fontWeight: FontWeight.w500,
                                     ),
                                   )),
                             )),
@@ -132,12 +161,6 @@ class _WelcomeViewState extends State<WelcomeView> {
                         ),
                       ),
                     ]);
-                    // FeedPost(
-                    //               newKey: userDashboard[index]["newKey"],
-                    //               name: userDashboard[index]["name"],
-                    //               carbon: userDashboard[index]["carbon"],
-                    //               text: userDashboard[index]["text"],
-                    //               time: userDashboard[index]["time"]);
                   },
                 ),
               ],
@@ -153,7 +176,7 @@ class _WelcomeViewState extends State<WelcomeView> {
                 backgroundColor: navbarColor,
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.bar_chart),
+                icon: Icon(Icons.emoji_emotions),
                 label: 'others',
                 backgroundColor: navbarColor,
               ),
@@ -176,15 +199,15 @@ class _WelcomeViewState extends State<WelcomeView> {
                   Navigator.of(context)
                       .pushNamedAndRemoveUntil(myStats, (route) => false);
                 case 1:
-                  Navigator.of(context)
-                      .pushNamedAndRemoveUntil(welcomeRoute, (route) => false);
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                      dashboardRoute, (route) => false);
                 case 2:
                   Navigator.of(context)
                       .pushNamedAndRemoveUntil(facts, (route) => false);
 
                 case 3:
-                  Navigator.of(context)
-                      .pushNamedAndRemoveUntil(welcomeRoute, (route) => false);
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                      dashboardRoute, (route) => false);
               }
               setState(
                 () {

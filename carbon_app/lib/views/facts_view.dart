@@ -72,7 +72,7 @@ class _FactsViewState extends State<FactsView> {
                     borderRadius: BorderRadius.circular(8.0),
                     image: DecorationImage(
                       opacity: 0.7,
-                      image: AssetImage("assets/grass.jpg"),
+                      image: AssetImage("assets/montagnes.jpg"),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -122,8 +122,8 @@ class _FactsViewState extends State<FactsView> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8.0),
                     image: DecorationImage(
-                      opacity: 0.7,
-                      image: AssetImage("assets/montagnes.jpg"),
+                      opacity: 0.3,
+                      image: AssetImage("assets/tree.jpg"),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -292,7 +292,7 @@ class _FactsViewState extends State<FactsView> {
               backgroundColor: navbarColor,
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.bar_chart),
+              icon: Icon(Icons.emoji_emotions),
               label: 'others',
               backgroundColor: navbarColor,
             ),
@@ -313,19 +313,19 @@ class _FactsViewState extends State<FactsView> {
             switch (index) {
               case 0:
                 Navigator.of(context)
-                    .pushNamedAndRemoveUntil(welcomeRoute, (route) => false);
+                    .pushNamedAndRemoveUntil(dashboardRoute, (route) => false);
                 break;
               case 1:
                 Navigator.of(context)
-                    .pushNamedAndRemoveUntil(welcomeRoute, (route) => false);
+                    .pushNamedAndRemoveUntil(dashboardRoute, (route) => false);
                 break;
               case 2:
                 Navigator.of(context)
-                    .pushNamedAndRemoveUntil(welcomeRoute, (route) => false);
+                    .pushNamedAndRemoveUntil(dashboardRoute, (route) => false);
                 break;
               case 3:
                 Navigator.of(context)
-                    .pushNamedAndRemoveUntil(welcomeRoute, (route) => false);
+                    .pushNamedAndRemoveUntil(dashboardRoute, (route) => false);
                 break;
             }
             setState(() {

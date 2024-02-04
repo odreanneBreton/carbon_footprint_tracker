@@ -31,7 +31,7 @@ void main() async {
       home: const HomePage(),
       routes: {
         // Pour se promener de pages en pages
-        welcomeRoute: (context) => const WelcomeView(),
+        dashboardRoute: (context) => const WelcomeView(),
         authRoute: (context) => AuthView(),
         loginRoute: (context) => const LoginScreen(),
         myStats: (context) => const MyStats(),
