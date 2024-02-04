@@ -15,16 +15,16 @@ class _LocationViewState extends State<LocationView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: background_color,
+      backgroundColor: backgroundColor,
       appBar: AppBar(
-        backgroundColor: header_color,
-        foregroundColor: letter_color,
+        backgroundColor: headerColor,
+        foregroundColor: letterColor,
         title: Center(
           child: Text(
             'New Itinerary',
             style: GoogleFonts.montserrat(
               textStyle: const TextStyle(
-                color: letter_color,
+                color: letterColor,
                 fontSize: 40,
                 fontWeight: FontWeight.normal,
               ),
