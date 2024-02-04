@@ -295,7 +295,7 @@ class _FactsViewState extends State<FactsView> {
               backgroundColor: navbarColor,
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.emoji_emotions),
+              icon: Icon(Icons.bar_chart),
               label: 'others',
               backgroundColor: navbarColor,
             ),
