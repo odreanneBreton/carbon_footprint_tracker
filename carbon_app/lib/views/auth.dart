@@ -1,7 +1,6 @@
 import 'package:carbon_app/constants/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:carbon_app/constants/color.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AuthView extends StatelessWidget {

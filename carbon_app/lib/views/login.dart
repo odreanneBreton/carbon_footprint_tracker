@@ -1,7 +1,9 @@
+import 'package:carbon_app/constants/routes.dart';
 import 'package:carbon_app/views/create_account.dart';
 import 'package:carbon_app/services/auth_service.dart';
 import 'package:carbon_app/views/welcome_view.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -17,15 +19,18 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Login'),
         centerTitle: true,
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Image.asset(
+              'assets/logo.png',
+              height: 300,
+              width: 300,
+            ),
             SizedBox(
-              width: MediaQuery.of(context).size.width / 2,
+              width: MediaQuery.of(context).size.width / 1.5,
               child: TextField(
                 controller: _emailController,
                 decoration: const InputDecoration(hintText: 'Email'),
@@ -35,7 +40,7 @@ class _LoginScreenState extends State<LoginScreen> {
               height: 30.0,
             ),
             SizedBox(
-              width: MediaQuery.of(context).size.width / 2,
+              width: MediaQuery.of(context).size.width / 1.5,
               child: TextField(
                 controller: _passwordController,
                 obscureText: true,
@@ -46,6 +51,24 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             const SizedBox(
               height: 30.0,
+            ),
+            OutlinedButton(
+              onPressed: () {
+                // Handle register button press
+                Navigator.of(context).pushNamed(loginRoute);
+              },
+              style: OutlinedButton.styleFrom(
+                side: const BorderSide(color: Color.fromARGB(255, 65, 154, 40)),
+                minimumSize: const Size(170, 60), // Adjust the size as needed
+              ),
+              child: Text(
+                'Login',
+                style: GoogleFonts.poppins(
+                    textStyle: const TextStyle(
+                  color: Color.fromARGB(255, 37, 129, 37),
+                  fontSize: 28, // Adjust the font size
+                )),
+              ),
             ),
             ElevatedButton(
               onPressed: () async {
