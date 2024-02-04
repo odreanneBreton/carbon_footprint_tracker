@@ -20,7 +20,6 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  await FirebaseAuth.instance.useAuthEmulator('localhost', 9099);
 
   runApp(
     MaterialApp(
@@ -47,6 +46,6 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return WelcomeView();
+    return AuthView();
   }
 }
