@@ -43,6 +43,7 @@ dependencies:
         url: https://github.com/781flyingdutchman/flutterlocation.git
         ref: 'V4'
         path: packages/location
+  firebase_database: ^10.4.4
 
 dev_dependencies:
   flutter_test:
