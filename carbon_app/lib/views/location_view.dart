@@ -56,10 +56,13 @@ class _GetItineraryState extends State<GetItineraryButton> {
         children: <Widget>[
           ElevatedButton(
             style: style,
-            onPressed: () {
-              LocationService().requestPermission();
-              final currentLocation = LocationService().getCurrentLocation();
-              print(currentLocation);
+            onPressed: () async {
+              if (await LocationService().requestPermission()) {
+                LocationData locationData = await LocationService().getCurrentLocation();
+                double? currentlatitude = locationData.latitude;
+                double? currentlongitude = locationData.longitude;
+                print("Location: $currentlatitude, $currentlongitude");
+              }
             },
             child: Text("Get Location"),
           )
@@ -76,15 +79,13 @@ class LocationService {
     final permission = await location.requestPermission();
     return permission == PermissionStatus.granted;
   }
-
+  
   Future<LocationData> getCurrentLocation() async {
-    final serviceEnabled = await location.serviceEnabled();
+    bool serviceEnabled = await location.serviceEnabled();
     if (!serviceEnabled) {
-      final result = await location.requestService();
-      if (result) {
-        print('Service has been enabled');
-      } else {
-        throw Exception('GPS service not enabled');
+      serviceEnabled = await location.requestService();
+      if (!serviceEnabled) {
+        throw Exception("Location service not enabled");
       }
     }
     final locationData = await location.getLocation();
