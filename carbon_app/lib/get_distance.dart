@@ -43,7 +43,7 @@ Future<List?> getDistanceNearestMetro () async {
 
 }
 
-double getRouteDistance(double latA, lonA, latB, lonB) { // utiliser les currentLatitude et currentLongitude du point de depart
+double getRouteDistance(double latA, double lonA, double latB, double lonB) { // utiliser les currentLatitude et currentLongitude du point de depart
   double distance = haversineDistance(latA, lonA, latB, lonB) * 1000; // et du point d'arrivee comme parametres
   return distance;
 }
