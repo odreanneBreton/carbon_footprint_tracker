@@ -38,68 +38,85 @@ class _MyStatsState extends State<MyStats> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: backgroundColor,
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(70.0),
-        child: AppBar(
-          backgroundColor: headerColor,
-          foregroundColor: Color.fromARGB(255, 0, 0, 0),
-          title: Center(
-            child: Text(
-              'GREENRIDE',
-              style: GoogleFonts.lato(
-                textStyle: const TextStyle(
-                  color: letterColor,
-                  fontSize: 40,
-                  fontWeight: FontWeight.normal,
+    return MaterialApp(
+      home: Scaffold(
+        backgroundColor: backgroundColor,
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(70.0),
+          child: AppBar(
+            backgroundColor: headerColor,
+            foregroundColor: Color.fromARGB(255, 0, 0, 0),
+            title: Center(
+              child: Text(
+                'GREENRIDE',
+                style: GoogleFonts.lato(
+                  textStyle: const TextStyle(
+                    color: letterColor,
+                    fontSize: 40,
+                    fontWeight: FontWeight.normal,
+                  ),
                 ),
               ),
             ),
           ),
         ),
-      ),
-      body: SingleChildScrollView(
-        child: Column(children: <Widget>[
-          SizedBox(
-            height: 20,
-          ),
-          //],
-          StatefulBuilder(
-              builder: (BuildContext context, StateSetter setState) {
-            return Column(children: [
-              Text("my stats",
-                  textAlign: TextAlign.center,
-                  style: GoogleFonts.kanit(
-                    textStyle: const TextStyle(
-                      fontSize: 40,
-                      fontWeight: FontWeight.normal,
-                    ),
-                  )),
-              SizedBox(
-                height: 30,
+        body: Stack(
+          children: [
+            SingleChildScrollView(
+              child: Column(
+                children: <Widget>[
+                  SizedBox(
+                    height: 20,
+                  ),
+                  StatefulBuilder(
+                    builder: (BuildContext context, StateSetter setState) {
+                      return Center(
+                        child: Column(
+                          children: [
+                            Text(
+                              "my stats",
+                              style: GoogleFonts.kanit(
+                                textStyle: const TextStyle(
+                                  fontSize: 40,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 30,
+                            ),
+                            Text(
+                              "500 Mt CO2 saved!",
+                              style: GoogleFonts.kanit(
+                                textStyle: const TextStyle(
+                                  fontSize: 40,
+                                  fontWeight: FontWeight.normal,
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 30,
+                            ),
+                            Text(
+                              "last rides:",
+                              style: GoogleFonts.kanit(
+                                textStyle: const TextStyle(
+                                  fontSize: 40,
+                                  fontWeight: FontWeight.normal,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                  ),
+                ],
               ),
-              Text("500 Mt CO2 saved!",
-                  textAlign: TextAlign.center,
-                  style: GoogleFonts.kanit(
-                    textStyle: const TextStyle(
-                      fontSize: 40,
-                      fontWeight: FontWeight.normal,
-                    ),
-                  )),
-              Text("last rides:",
-                  textAlign: TextAlign.left,
-                  style: GoogleFonts.kanit(
-                    textStyle: const TextStyle(
-                      fontSize: 40,
-                      fontWeight: FontWeight.normal,
-                    ),
-                  )),
-            ]);
-          }),
-        ]),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
+            ),
+          ],
+        ),
+        bottomNavigationBar: BottomNavigationBar(
           iconSize: 45,
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
@@ -130,23 +147,26 @@ class _MyStatsState extends State<MyStats> {
               case 0:
                 Navigator.of(context)
                     .pushNamedAndRemoveUntil(welcomeRoute, (route) => false);
+                break;
               case 1:
                 Navigator.of(context)
                     .pushNamedAndRemoveUntil(welcomeRoute, (route) => false);
+                break;
               case 2:
                 Navigator.of(context)
                     .pushNamedAndRemoveUntil(welcomeRoute, (route) => false);
-
+                break;
               case 3:
                 Navigator.of(context)
                     .pushNamedAndRemoveUntil(welcomeRoute, (route) => false);
+                break;
             }
-            setState(
-              () {
-                _selectedIndex = index;
-              },
-            );
-          }),
+            setState(() {
+              _selectedIndex = index;
+            });
+          },
+        ),
+      ),
     );
   }
 }
