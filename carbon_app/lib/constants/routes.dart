@@ -5,3 +5,4 @@ const loginRoute = "/login/";
 const createAccountRoute = "/signup/";
 const myStats = "/myStats/";
 const facts = "/facts/";
+const profile = "/profile/";

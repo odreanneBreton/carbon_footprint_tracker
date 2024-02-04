@@ -47,24 +47,7 @@ class _CreateAccountState extends State<CreateAccount> {
             const SizedBox(
               height: 30.0,
             ),
-            ElevatedButton(
-              onPressed: () async {
-                final message = await AuthService().registration(
-                  email: _emailController.text,
-                  password: _passwordController.text,
-                );
-                if (message!.contains('Success')) {
-                  Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (context) => const WelcomeView()));
-                }
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text(message),
-                  ),
-                );
-              },
-              child: const Text('Create Account'),
-            ),
+          
           ],
         ),
       ),

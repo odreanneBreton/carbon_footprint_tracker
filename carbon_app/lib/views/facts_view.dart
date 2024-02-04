@@ -24,7 +24,7 @@ class _FactsViewState extends State<FactsView> {
     {
       "newKey": 1,
       "text":
-          "In 1975, the National Academy of Sciences estimated that ocean-based sources, such as cargo ships and cruise liners had dumped 14 billion pounds of garbage into the ocean.",
+          "n 1975, the National Academy of Sciences estimated that ocean-based sources, such as cargo ships and cruise liners had dumped 14 billion pounds of garbage into the ocean.",
       "source":
           "Do Something.org https://www.dosomething.org/us/facts/11-facts-about-pollution"
     },
@@ -71,8 +71,9 @@ class _FactsViewState extends State<FactsView> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8.0),
                     image: DecorationImage(
-                      opacity: 0.7,
-                      image: AssetImage("assets/grass.jpg"),
+                      opacity: 0.6,
+                      image: NetworkImage(
+                          "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.rvSWtRd_oPRTwDoTCmkP5gAAAA%26pid%3DApi&f=1&ipt=4eff9a5d7d22249208e9472e985283aee53c7c785e9265810c51f0f39de585bc&ipo=images"),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -97,11 +98,11 @@ class _FactsViewState extends State<FactsView> {
                           style: GoogleFonts.roboto(
                             textStyle: const TextStyle(
                               fontSize: 15,
-                              fontWeight: FontWeight.w500,
+                              fontWeight: FontWeight.normal,
                             ),
                           )),
                       SizedBox(
-                        height: 200,
+                        height: 370,
                       ),
                       Text(
                           "source: Do Something.org https://www.dosomething.org/us/facts/11-facts-about-pollution",
@@ -122,48 +123,9 @@ class _FactsViewState extends State<FactsView> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8.0),
                     image: DecorationImage(
-                      opacity: 0.7,
                       image: AssetImage("assets/montagnes.jpg"),
                       fit: BoxFit.cover,
                     ),
-                  ),
-                  child: Column(
-                    children: [
-                      SizedBox(
-                        height: 40,
-                      ),
-                      Text('did you know...',
-                          textAlign: TextAlign.center,
-                          style: GoogleFonts.roboto(
-                            textStyle: const TextStyle(
-                              fontSize: 40,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          )),
-                      SizedBox(
-                        height: 30,
-                      ),
-                      Text(facts[1]["text"],
-                          textAlign: TextAlign.center,
-                          style: GoogleFonts.roboto(
-                            textStyle: const TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          )),
-                      SizedBox(
-                        height: 200,
-                      ),
-                      Text(
-                          "source: Do Something.org https://www.dosomething.org/us/facts/11-facts-about-pollution",
-                          textAlign: TextAlign.left,
-                          style: GoogleFonts.roboto(
-                            textStyle: const TextStyle(
-                              fontSize: 10,
-                              fontWeight: FontWeight.normal,
-                            ),
-                          )),
-                    ],
                   ),
                 ),
 
@@ -173,49 +135,10 @@ class _FactsViewState extends State<FactsView> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8.0),
                     image: DecorationImage(
-                      opacity: 0.6,
                       image: NetworkImage(
                           "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.hdwallpaper.nu%2Fwp-content%2Fuploads%2F2015%2F09%2Ftropical_beach_blue_summer_sea_emerald_sand_hd-wallpaper-1701606.jpg&f=1&nofb=1&ipt=6eb95fc58404f4ef582fa656596438a8313acf27a78c036f2657e601cba7be53&ipo=images"),
                       fit: BoxFit.cover,
                     ),
-                  ),
-                  child: Column(
-                    children: [
-                      SizedBox(
-                        height: 40,
-                      ),
-                      Text('did you know...',
-                          textAlign: TextAlign.center,
-                          style: GoogleFonts.roboto(
-                            textStyle: const TextStyle(
-                              fontSize: 40,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          )),
-                      SizedBox(
-                        height: 60,
-                      ),
-                      Text(facts[2]["text"],
-                          textAlign: TextAlign.center,
-                          style: GoogleFonts.roboto(
-                            textStyle: const TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          )),
-                      SizedBox(
-                        height: 200,
-                      ),
-                      Text(
-                          "source: Do Something.org https://www.dosomething.org/us/facts/11-facts-about-pollution",
-                          textAlign: TextAlign.left,
-                          style: GoogleFonts.roboto(
-                            textStyle: const TextStyle(
-                              fontSize: 10,
-                              fontWeight: FontWeight.normal,
-                            ),
-                          )),
-                    ],
                   ),
                 ),
 
@@ -225,52 +148,29 @@ class _FactsViewState extends State<FactsView> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8.0),
                     image: DecorationImage(
-                      opacity: 0.7,
                       image: NetworkImage(
                           "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.OjNHJL6A-Lzw_jLJfFgtMwHaEK%26pid%3DApi&f=1&ipt=9f19fe8349e515790867030de18da3ba6f4cae0548d5195b66004453fb7916d0&ipo=images"),
                       fit: BoxFit.cover,
                     ),
                   ),
-                  child: Column(
-                    children: [
-                      SizedBox(
-                        height: 40,
-                      ),
-                      Text('did you know...',
-                          textAlign: TextAlign.center,
-                          style: GoogleFonts.roboto(
-                            textStyle: const TextStyle(
-                              fontSize: 40,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          )),
-                      SizedBox(
-                        height: 60,
-                      ),
-                      Text(facts[2]["text"],
-                          textAlign: TextAlign.center,
-                          style: GoogleFonts.roboto(
-                            textStyle: const TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          )),
-                      SizedBox(
-                        height: 200,
-                      ),
-                      Text(
-                          "source: Do Something.org https://www.dosomething.org/us/facts/11-facts-about-pollution",
-                          textAlign: TextAlign.left,
-                          style: GoogleFonts.roboto(
-                            textStyle: const TextStyle(
-                              fontSize: 10,
-                              fontWeight: FontWeight.normal,
-                            ),
-                          )),
-                    ],
+                ),
+
+                //5th Image of Slider
+                Container(
+                  margin: EdgeInsets.all(6.0),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8.0),
+                    image: DecorationImage(
+                      image: NetworkImage(
+                          "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.bircyBDvJOcKd3mkR6ramwHaEK%26pid%3DApi&f=1&ipt=5909f3cdfdc42fb7effd2baabc4312074c2866f899860a96cf501dc9d1f51cf4&ipo=images"),
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
               ],
+
+              //Slider Container properties
+              //carousel Slider flutter
               options: CarouselOptions(
                 height: 650.0,
                 enlargeCenterPage: true,
@@ -310,24 +210,21 @@ class _FactsViewState extends State<FactsView> {
           currentIndex: _selectedIndex,
           selectedItemColor: iconColor,
           onTap: (int index) {
-            switch (index) {
-              case 0:
-                Navigator.of(context)
-                    .pushNamedAndRemoveUntil(welcomeRoute, (route) => false);
-                break;
-              case 1:
-                Navigator.of(context)
-                    .pushNamedAndRemoveUntil(welcomeRoute, (route) => false);
-                break;
-              case 2:
-                Navigator.of(context)
-                    .pushNamedAndRemoveUntil(welcomeRoute, (route) => false);
-                break;
-              case 3:
-                Navigator.of(context)
-                    .pushNamedAndRemoveUntil(welcomeRoute, (route) => false);
-                break;
-            }
+           switch (index) {
+                case 0:
+                  Navigator.of(context)
+                      .pushNamedAndRemoveUntil(myStats, (route) => false);
+                case 1:
+                  Navigator.of(context)
+                      .pushNamedAndRemoveUntil(welcomeRoute, (route) => false);
+                case 2:
+                  Navigator.of(context)
+                      .pushNamedAndRemoveUntil(welcomeRoute, (route) => false);
+
+                case 3:
+                  Navigator.of(context)
+                      .pushNamedAndRemoveUntil(profile, (route) => false);
+              }
             setState(() {
               _selectedIndex = index;
             });

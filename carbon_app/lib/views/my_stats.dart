@@ -160,6 +160,7 @@ class _MyStatsState extends State<MyStats> {
                 Navigator.of(context)
                     .pushNamedAndRemoveUntil(welcomeRoute, (route) => false);
                 break;
+
             }
             setState(() {
               _selectedIndex = index;
