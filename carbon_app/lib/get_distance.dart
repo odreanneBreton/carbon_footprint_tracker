@@ -1,4 +1,3 @@
-import 'dart:math';
 import 'package:carbon_app/unit_converter.dart';
 import 'package:carbon_app/views/location_view.dart';
 import 'package:csv/csv.dart';
