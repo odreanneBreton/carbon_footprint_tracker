@@ -14,6 +14,7 @@ import 'package:flutter/material.dart';
 import 'firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,6 +22,11 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  final firebaseApp = Firebase.app();
+  final rtdb = FirebaseDatabase.instanceFor(
+      app: firebaseApp,
+      databaseURL:
+          'https://carbonfootprint-5ef42-default-rtdb.firebaseio.com/');
 
   runApp(
     MaterialApp(

@@ -7,11 +7,13 @@ class FirebaseDatabaseService {
 
   Future<void> addUser(User user) async {
     try {
-      await usersReference.child(user.uid).set({
-        'name': user.name,
-        'uid': user.uid,
-        'money': user.money,
-        'co2': user.co2,
+      await usersReference.child("users").set({
+        user.uid: {
+          'name': user.name,
+          'uid': user.uid,
+          'money': user.money,
+          'co2': user.co2,
+        }
       });
       print('User added successfully');
     } catch (e) {
@@ -22,11 +24,12 @@ class FirebaseDatabaseService {
 
   Future<void> addNewUser(String uid) async {
     try {
-      await usersReference.child(uid).set({
-        'name': "default",
-        'uid': uid,
-        'money': 0,
-        'co2': 0,
+      await usersReference.child("users").set({
+        uid: {
+          'name': "default",
+          'money': 0,
+          'co2': 0,
+        }
       });
       print('User added successfully');
     } catch (e) {

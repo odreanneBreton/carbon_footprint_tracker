@@ -4,6 +4,8 @@ import 'package:carbon_app/services/auth_service.dart';
 import 'package:carbon_app/views/welcome_view.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:carbon_app/services/realtime_service.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -61,6 +63,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         password: _passwordController.text,
                       );
                       if (message!.contains('Success')) {
+                        FirebaseDatabaseService firebaseDatabaseService;
+                        firebaseDatabaseService.addNewUser();
                         Navigator.of(context).pushReplacement(
                           MaterialPageRoute(
                             builder: (context) => const WelcomeView(),
