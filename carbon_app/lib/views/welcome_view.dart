@@ -176,7 +176,7 @@ class _WelcomeViewState extends State<WelcomeView> {
                 backgroundColor: navbarColor,
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.bar_chart),
+                icon: Icon(Icons.emoji_emotions),
                 label: 'others',
                 backgroundColor: navbarColor,
               ),
